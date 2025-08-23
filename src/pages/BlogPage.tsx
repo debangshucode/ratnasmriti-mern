@@ -1,0 +1,112 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Calendar, Clock, User, ArrowRight } from 'lucide-react';
+import { mockBlogs } from '../data/mockData';
+
+export const BlogPage: React.FC = () => {
+  return (
+    <div className="pt-24 pb-20">
+      <div className="max-w-7xl mx-auto px-4">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <h1 className="text-5xl font-bold text-gray-900 mb-4">
+            Jewelry Insights & Stories
+          </h1>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Discover the latest trends, care tips, and fascinating stories from the world of jewelry.
+          </p>
+        </div>
+
+        {/* Blog Posts */}
+        <div className="space-y-8">
+          {mockBlogs.map((blog) => (
+            <article
+              key={blog.id}
+              className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 group"
+            >
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {/* Image - 30% width on desktop */}
+                <div className="md:col-span-1">
+                  <div className="aspect-video md:aspect-square relative overflow-hidden">
+                    <img
+                      src={blog.image}
+                      alt={blog.title}
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                    />
+                    <div className="absolute top-4 left-4">
+                      <span className="px-3 py-1 bg-rose-600 text-white text-sm font-semibold rounded-full">
+                        {blog.category}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Content - 70% width on desktop */}
+                <div className="md:col-span-2 p-6 md:p-8 flex flex-col justify-between">
+                  <div>
+                    <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 group-hover:text-rose-600 transition-colors">
+                      {blog.title}
+                    </h2>
+                    <p className="text-gray-600 text-lg leading-relaxed mb-6">
+                      {blog.excerpt}
+                    </p>
+                    {blog.content && (
+                      <p className="text-gray-500 text-base leading-relaxed mb-6">
+                        {blog.content.substring(0, 200)}...
+                      </p>
+                    )}
+                  </div>
+
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-4 sm:space-y-0">
+                    {/* Meta Info */}
+                    <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500">
+                      <div className="flex items-center space-x-1">
+                        <User className="h-4 w-4" />
+                        <span>{blog.author}</span>
+                      </div>
+                      <div className="flex items-center space-x-1">
+                        <Calendar className="h-4 w-4" />
+                        <span>{blog.date}</span>
+                      </div>
+                      <div className="flex items-center space-x-1">
+                        <Clock className="h-4 w-4" />
+                        <span>{blog.readTime}</span>
+                      </div>
+                    </div>
+
+                    {/* Read More Button */}
+                    <button className="inline-flex items-center space-x-2 text-rose-600 hover:text-purple-600 font-semibold transition-colors group">
+                      <span>Read Full Article</span>
+                      <ArrowRight className="h-4 w-4 transform group-hover:translate-x-1 transition-transform" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        {/* Newsletter Signup */}
+        <div className="mt-16 bg-gradient-to-r from-rose-600 to-purple-600 rounded-2xl p-8 text-center text-white">
+          <h3 className="text-3xl font-bold mb-4">Stay Updated</h3>
+          <p className="text-lg mb-6 opacity-90">
+            Subscribe to our newsletter for the latest jewelry trends and exclusive offers.
+          </p>
+          <form className="max-w-md mx-auto flex gap-4">
+            <input
+              type="email"
+              placeholder="Enter your email"
+              className="flex-1 px-4 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-white"
+            />
+            <button
+              type="submit"
+              className="px-6 py-3 bg-white text-rose-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors"
+            >
+              Subscribe
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  );
+};
