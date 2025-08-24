@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, MapPin, Phone, Mail } from 'lucide-react';
-import { HeroSection } from '../components/HeroSection';
+import {HeroSection} from "../components/HeroSection";
+
 import { ProductCard } from '../components/ProductCard';
 import { TestimonialCarousel } from '../components/TestimonialCarousel';
 import { mockProducts, mockCategories, mockBlogs } from '../data/mockData';
