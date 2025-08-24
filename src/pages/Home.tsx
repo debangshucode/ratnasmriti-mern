@@ -22,19 +22,16 @@ export const Home: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                Crafting Elegance Since 1950
+                Ratnasmriti Gems and Jewellers
               </h2>
               <p className="text-lg text-gray-600 mb-6">
-                For over seven decades, we have been creating exquisite jewelry pieces that tell stories of love, 
-                celebration, and timeless beauty. Our master craftsmen combine traditional techniques with modern 
-                innovation to bring you collections that are both classic and contemporary.
+                Ratnasmriti Gems and Jewellers is India’s most trusted gemstone and crystal showroom, proudly serving Shreerampore and Sarat Sarani. With a legacy of excellence, we specialize in authentic, high-quality gemstones, crystals, and bespoke jewellery that seamlessly blend traditional charm with modern elegance.
               </p>
               <p className="text-lg text-gray-600 mb-8">
-                Each piece in our collection is carefully selected and crafted with the finest materials, 
-                ensuring that every customer receives jewelry that will be treasured for generations to come.
+                Our store is led by Sanjay Sarkar, a passionate jewellery designer with over 20 years of experience in crafting exquisite pieces that captivate every heart. At Ratnasmriti Gems, we are committed to delivering not just jewellery, but trust, authenticity, and unmatched customer satisfaction.
               </p>
               <Link
-                to="/categories"
+                to="/about"
                 className="inline-flex items-center space-x-2 bg-gradient-to-r from-rose-600 to-purple-600 text-white px-6 py-3 rounded-full hover:shadow-lg transition-all"
               >
                 <span>Discover Our Story</span>
@@ -43,7 +40,7 @@ export const Home: React.FC = () => {
             </div>
             <div className="relative">
               <img
-                src="https://images.pexels.com/photos/1454166/pexels-photo-1454166.jpeg?auto=compress&cs=tinysrgb&w=800"
+                src="images/store1.jpeg"
                 alt="Jewelry craftsmanship"
                 className="rounded-2xl shadow-2xl"
               />

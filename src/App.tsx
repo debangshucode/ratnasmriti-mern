@@ -8,7 +8,7 @@ import { CategoryProducts } from './pages/CategoryProducts';
 import { ProductDetail } from './pages/ProductDetail';
 import { BlogPage } from './pages/BlogPage';
 import { AdminPage } from './pages/AdminPage';
-
+import About from './components/About';
 function App() {
   return (
     <Router>
@@ -17,6 +17,7 @@ function App() {
         <main>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
             <Route path="/categories" element={<Categories />} />
             <Route path="/category/:categoryId" element={<CategoryProducts />} />
             <Route path="/product/:productId" element={<ProductDetail />} />

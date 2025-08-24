@@ -31,7 +31,7 @@ export const WhatsAppModal: React.FC<WhatsAppModalProps> = ({ isOpen, onClose, p
     
     // Format the message
     const message = `
-🌟 *Order Inquiry from RoyalGems Website*
+🌟 *Order Inquiry from Ratnasmriti Gems and Jewellers Website*
 
 👤 *Customer Information:*
 Name: ${customerInfo.name}
