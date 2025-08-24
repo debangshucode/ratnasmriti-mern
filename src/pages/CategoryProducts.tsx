@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Filter, Grid, List, SortAsc } from 'lucide-react';
+import { Filter, Grid, List } from 'lucide-react';
 import { ProductCard } from '../components/ProductCard';
 import { mockProducts, mockCategories } from '../data/mockData';
 
@@ -8,7 +8,7 @@ export const CategoryProducts: React.FC = () => {
   const { categoryId } = useParams<{ categoryId: string }>();
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [sortBy, setSortBy] = useState('name');
-  const [priceRange, setPriceRange] = useState<[number, number]>([0, 5000]);
+  const [priceRange] = useState<[number, number]>([0, 5000]);
   
   const category = mockCategories.find(c => c.id === categoryId);
   const products = mockProducts.filter(p => p.categoryId === categoryId);
@@ -89,7 +89,7 @@ export const CategoryProducts: React.FC = () => {
         {/* Products Grid */}
         <div className={`grid gap-8 ${
           viewMode === 'grid' 
-            ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4' 
+            ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-1' 
             : 'grid-cols-1 md:grid-cols-2 gap-6'
         }`}>
           {filteredProducts.map((product) => (

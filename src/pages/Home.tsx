@@ -12,7 +12,7 @@ export const Home: React.FC = () => {
   const featuredBlogs = mockBlogs.slice(0, 3);
 
   return (
-    <div className="pt-16">
+    <div className="w-full overflow-x-hidden">
       {/* Hero Section */}
       <HeroSection />
 
@@ -61,7 +61,7 @@ export const Home: React.FC = () => {
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Recent Arrivals</h2>
             <p className="text-lg text-gray-600">Discover our latest collection of stunning jewelry pieces</p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
             {recentProducts.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
@@ -117,7 +117,7 @@ export const Home: React.FC = () => {
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Bestsellers</h2>
             <p className="text-lg text-gray-600">Our most loved pieces chosen by customers worldwide</p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
             {mostSoldProducts.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}

@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Calendar, Clock, User, ArrowRight } from 'lucide-react';
+import { Calendar, Clock, User } from 'lucide-react';
 import { mockBlogs } from '../data/mockData';
 
 export const BlogPage: React.FC = () => {
@@ -75,10 +74,7 @@ export const BlogPage: React.FC = () => {
                     </div>
 
                     {/* Read More Button */}
-                    <button className="inline-flex items-center space-x-2 text-rose-600 hover:text-purple-600 font-semibold transition-colors group">
-                      <span>Read Full Article</span>
-                      <ArrowRight className="h-4 w-4 transform group-hover:translate-x-1 transition-transform" />
-                    </button>
+                   
                   </div>
                 </div>
               </div>
@@ -86,26 +82,7 @@ export const BlogPage: React.FC = () => {
           ))}
         </div>
 
-        {/* Newsletter Signup */}
-        <div className="mt-16 bg-gradient-to-r from-rose-600 to-purple-600 rounded-2xl p-8 text-center text-white">
-          <h3 className="text-3xl font-bold mb-4">Stay Updated</h3>
-          <p className="text-lg mb-6 opacity-90">
-            Subscribe to our newsletter for the latest jewelry trends and exclusive offers.
-          </p>
-          <form className="max-w-md mx-auto flex gap-4">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="flex-1 px-4 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-white"
-            />
-            <button
-              type="submit"
-              className="px-6 py-3 bg-white text-rose-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors"
-            >
-              Subscribe
-            </button>
-          </form>
-        </div>
+       
       </div>
     </div>
   );
