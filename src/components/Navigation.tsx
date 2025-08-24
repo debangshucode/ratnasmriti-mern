@@ -21,6 +21,7 @@ export const Navigation: React.FC = () => {
 
   const navLinks = [
     { to: '/', label: 'Home' },
+    { to: '/about', label: 'About' },
     { to: '/categories', label: 'Categories' },
     { to: '/blog', label: 'Blog' },
     { to: '/admin', label: 'Admin' }
