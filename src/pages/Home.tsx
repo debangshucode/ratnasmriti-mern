@@ -34,7 +34,7 @@ export const Home: React.FC = () => {
                 ensuring that every customer receives jewelry that will be treasured for generations to come.
               </p>
               <Link
-                to="/categories"
+                to="/about"
                 className="inline-flex items-center space-x-2 bg-gradient-to-r from-rose-600 to-purple-600 text-white px-6 py-3 rounded-full hover:shadow-lg transition-all"
               >
                 <span>Discover Our Story</span>
