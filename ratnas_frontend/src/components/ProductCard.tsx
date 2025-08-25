@@ -35,7 +35,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   return (
     <>
       <div
-        className={`flex bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 ${className}`}
+        className={`flex bg-[#F5EBDD] border-2 border-[#BFA06E]  rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 ${className}`}
       >
         {/* Image left */}
         <div className="relative w-1/3 min-w-[180px] h-auto">
@@ -71,18 +71,18 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         {/* Info right */}
         <div className="flex flex-col justify-between p-6 w-2/3">
           <div>
-            <div className="text-xs sm:text-sm text-gray-500">
+            <div className="text-xs sm:text-sm text-[#0D4F3C] ">
               {product.category}
             </div>
-            <h3 className="text-sm sm:text-lg font-semibold text-gray-900 mb-2 line-clamp-2">
+            <h3 className="text-sm sm:text-lg font-semibold text-[#2B2B2B]  mb-2 line-clamp-2">
               {product.name}
             </h3>
             <div className="flex items-center space-x-2 mb-4">
-              <span className="text-lg sm:text-xl font-bold text-gray-900">
+              <span className="text-lg sm:text-xl font-bold text-[#0D4F3C]">
                 ${product.price.toFixed(2)}
               </span>
               {product.originalPrice && (
-                <span className="text-xs sm:text-sm text-gray-500 line-through">
+                <span className="text-xs sm:text-sm text-[#0D4F3C] line-through">
                   ${product.originalPrice.toFixed(2)}
                 </span>
               )}
@@ -90,18 +90,18 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           </div>
 
           {/* Action buttons */}
-          <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-3 text-sm sm:text-base">
+          <div className="flex flex-col items-center  sm:flex-row space-y-3 sm:space-y-0 sm:space-x-3 text-sm sm:text-base">
             <a
               href={`tel:${product.phone || ""}`}
-              className="flex-1 text-center px-4 py-2 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700 transition"
+              className=" w-full flex-1 text-center px-6 py-2 rounded-lg bg-[#BFA06E] text-[#FAF7F0] font-medium hover:bg-gray-700 transition"
             >
               Call Now
             </a>
             <button
               onClick={() => setIsModalOpen(true)}
-              className="flex-1 text-center px-4 py-2 rounded-lg bg-green-600 text-white font-medium hover:bg-green-700 transition"
+              className="w-full flex-1 text-center px-6 py-2 rounded-lg bg-[#BFA06E] text-[#FAF7F0] font-medium hover:bg-gray-700 transition"
             >
-              Order via WhatsApp
+              Order
             </button>
           </div>
         </div>

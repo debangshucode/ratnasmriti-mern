@@ -54,7 +54,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   }, [rotateInterval]);
 
   return (
-    <section className="max-w-7xl pt-20 relative w-full min-h-screen flex flex-col-reverse lg:flex-row items-center gap-10 px-6 lg:px-24 py-12  overflow-hidden">
+    <section className="pt-20 relative w-full min-h-screen flex flex-col-reverse lg:flex-row items-center gap-10 lg:px-24 py-12  overflow-hidden">
       {/* Left: Image Stack */}
 
       <div className="relative w-full lg:w-1/2 flex justify-start items-center">
@@ -88,7 +88,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         </div>
       </div>
       {/* Right: Content */}
-      <div className="w-full text-center lg:text-left text-black max-w-5xl flex flex-col justify-center mb-12 lg:mb-0">
+      <div className="w-full text-center  lg:text-left text-black max-w-5xl flex flex-col justify-center mb-12 lg:mb-0">
         <h1 className="text-xl sm:text-5xl font-bold mb-6">
           Ratnasmriti Gems and Jewellers
         </h1>
@@ -113,9 +113,15 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               <ArrowRight className="h-5 w-5" />
             </span>
           </Link>
-          <button className="px-8 py-4 border-2 border-white text-white font-semibold rounded-full hover:bg-white hover:text-gray-900 transition-all">
-            Watch Story
-          </button>
+          <Link
+            to="/about"
+            className="inline-block rounded-full bg-gradient-to-r from-rose-600 to-pink-500 p-[2px] transition-all hover:shadow-lg"
+          >
+            <span className="inline-flex items-center space-x-2 bg-white rounded-full px-10 py-3 font-semibold text-gray-900 hover:bg-gradient-to-r hover:from-rose-600 hover:to-pink-500 hover:text-white transition-all">
+              <span>Watch Story</span>
+              <ArrowRight className="h-5 w-5" />
+            </span>
+          </Link>
         </div>
       </div>
     </section>

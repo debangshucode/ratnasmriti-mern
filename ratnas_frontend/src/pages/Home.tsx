@@ -7,6 +7,7 @@ import ScrollStack from "../components/ui/ScrollStack";
 import { ProductCard } from "../components/ProductCard";
 import { TestimonialCarousel } from "../components/TestimonialCarousel";
 import { mockProducts, mockCategories, mockBlogs } from "../data/mockData";
+import "../index.css";
 
 export const Home: React.FC = () => {
   const recentProducts = mockProducts.slice(0, 4);
@@ -16,10 +17,12 @@ export const Home: React.FC = () => {
   return (
     <div className="w-full overflow-x-hidden">
       {/* Hero Section */}
-      <HeroSection />
+      <div className="max-w-9xl mx-auto px-4 bg-[#FAF7F0]">
+        <HeroSection />
+      </div>
 
       {/* About Section */}
-      <section className="py-20 bg-white">
+      {/* <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -42,7 +45,7 @@ export const Home: React.FC = () => {
               </p>
               <Link
                 to="/about"
-                className="inline-flex items-center space-x-2 bg-gradient-to-r from-rose-600 to-purple-600 text-white px-6 py-3 rounded-full hover:shadow-lg transition-all"
+                className="inline-flex items-center space-x-2 bg-gradient-to-r from-rose-600 to-purple-600 text-white px-10 text-center py-3 rounded-full hover:shadow-lg transition-all"
               >
                 <span>Discover Our Story</span>
                 <ArrowRight className="h-5 w-5" />
@@ -59,15 +62,15 @@ export const Home: React.FC = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Recent Products */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 ">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            <h1 className="text-6xl font-bold text-gray-900 mb-4">
               Recent Arrivals
-            </h2>
+            </h1>
             <p className="text-lg text-gray-600">
               Discover our latest collection of stunning jewelry pieces
             </p>
@@ -81,12 +84,12 @@ export const Home: React.FC = () => {
       </section>
 
       {/* Shop by Category */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-[#FAF7F0]">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            <h1 className="text-6xl font-bold text-gray-900 mb-4">
               Shop by Category
-            </h2>
+            </h1 >
             <p className="text-lg text-gray-600">
               Explore our diverse range of jewelry collections
             </p>
@@ -122,7 +125,7 @@ export const Home: React.FC = () => {
               to="/categories"
               className="inline-flex items-center space-x-2 bg-gradient-to-r from-rose-600 to-purple-600 text-white px-8 py-3 rounded-full hover:shadow-lg transition-all"
             >
-              <span>View All Categories</span>
+              <span className="text-xl">View All Categories</span>
               <ArrowRight className="h-5 w-5" />
             </Link>
           </div>
@@ -130,10 +133,10 @@ export const Home: React.FC = () => {
       </section>
 
       {/* Most Sold Products */}
-      <section className="py-20 bg-gradient-to-br from-rose-50 to-purple-50">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-6xl font-bold text-gray-900 mb-4">
               Bestsellers
             </h2>
             <p className="text-lg text-gray-600">
@@ -148,56 +151,17 @@ export const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Blog Section */}
-      {/* <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Latest from Our Blog</h2>
-            <p className="text-lg text-gray-600">Stay updated with jewelry trends, care tips, and stories</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {featuredBlogs.map((blog) => (
-              <Link
-                key={blog.id}
-                to="/blog"
-                className="group bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300"
-              >
-                <div className="aspect-video overflow-hidden">
-                  <img
-                    src={blog.image}
-                    alt={blog.title}
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                  />
-                </div>
-                <div className="p-6">
-                  <div className="text-sm text-rose-600 font-medium mb-2">{blog.category}</div>
-                  <h3 className="font-bold text-xl text-gray-900 mb-3 group-hover:text-rose-600 transition-colors">
-                    {blog.title}
-                  </h3>
-                  <p className="text-gray-600 line-clamp-2">{blog.excerpt}</p>
-                  <div className="flex items-center justify-between mt-4 pt-4 border-t">
-                    <span className="text-sm text-gray-500">{blog.date}</span>
-                    <span className="text-rose-600 text-sm font-medium">Read More →</span>
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-          <div className="text-center mt-12">
-            <Link
-              to="/blog"
-              className="inline-flex items-center space-x-2 bg-gradient-to-r from-rose-600 to-purple-600 text-white px-8 py-3 rounded-full hover:shadow-lg transition-all"
-            >
-              <span>View All Articles</span>
-              <ArrowRight className="h-5 w-5" />
-            </Link>
-          </div>
-        </div>
-      </section> */}
-
-      <ScrollStack className="bg-white">
+      <ScrollStack className="bg-[#FAF7F0] hide-scrollbar">
         <BlogSection featuredBlogs={featuredBlogs} />
       </ScrollStack>
+      <div className="w-full bg-[#FAF7F0]  flex justify-center self-end pt-5 pb-10">
+        <Link
+          to="/blog"
+          className="bg-[#e57373] hover:bg-[#d45a5a] text-white font-semibold px-8 py-3 rounded-lg shadow-lg transition-colors duration-300"
+        >
+          View All Blogs
+        </Link>
+      </div>
 
       {/* Testimonials */}
       <TestimonialCarousel />

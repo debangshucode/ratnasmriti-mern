@@ -12,10 +12,10 @@ interface Blog {
 
 export default function BlogSection({ featuredBlogs }: { featuredBlogs: Blog[] }) {
   return (
-    <section className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="py-20  hide-scrollbar">
+      <div className="max-w-7xl mx-auto ">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900">Latest from Our Blog</h2>
+          <h2 className="text-6xl font-bold text-gray-900">Latest from Our Blog</h2>
           <p className="mt-3 text-lg text-gray-600">
             Stay updated with jewelry trends, care tips, and stories
           </p>
@@ -35,7 +35,7 @@ export default function BlogSection({ featuredBlogs }: { featuredBlogs: Blog[] }
 
               {/* Right Content */}
               <div className="flex flex-col justify-center">
-                <div className="text-sm font-medium text-rose-600 mb-2">
+                <div className="text-md font-medium text-[#e57373] mb-2">
                   {blog.category}
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-3">
@@ -47,7 +47,7 @@ export default function BlogSection({ featuredBlogs }: { featuredBlogs: Blog[] }
                   <span className="text-gray-500">{blog.date}</span>
                   <Link
                     to="/blog"
-                    className="text-rose-600 font-medium hover:underline"
+                    className="text-[#e57373] font-medium hover:underline"
                   >
                     Read More →
                   </Link>
