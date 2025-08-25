@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import Cookies from "js-cookie";
+// import Cookies from "js-cookie";
 
 interface LoginModalProps {
   isOpen: boolean;
@@ -35,14 +35,15 @@ const handleSubmit = async (e: React.FormEvent) => {
 
   try {
     const baseUrl = import.meta.env.VITE_API_URL;
-    const response = await axios.post(`${baseUrl}/auth/login`, {
-      email,
-      password,
-    });
+    const response = await axios.post(
+  `${baseUrl}/auth/login`,
+  { email, password },
+  { withCredentials: true } // very important
+);
 
     if (response.data.success) {
       // ✅ Save token in cookie (7 days expiry)
-      Cookies.set("token", response.data.token, { expires: 7 });
+      // Cookies.set("token", response.data.token, { expires: 7 });
 
       onClose();
       navigate("/admin");
