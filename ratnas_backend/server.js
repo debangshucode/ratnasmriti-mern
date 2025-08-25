@@ -38,6 +38,7 @@ app.use("/api/auth", adminRouter);
 app.use("/api/admin/posts", adminPostRoutes);
 app.use("/api/admin/categories", adminCategoryRoutes);
 app.use("/api/admin/blogs", adminBlogRoutes);
+app.use("/api", adminCategoryRoutes);
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 const PORT = process.env.PORT || 5000;
