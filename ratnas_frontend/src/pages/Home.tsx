@@ -1,11 +1,12 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { ArrowRight, MapPin, Phone, Mail } from 'lucide-react';
-import {HeroSection} from "../components/HeroSection";
-
-import { ProductCard } from '../components/ProductCard';
-import { TestimonialCarousel } from '../components/TestimonialCarousel';
-import { mockProducts, mockCategories, mockBlogs } from '../data/mockData';
+import React from "react";
+import { Link } from "react-router-dom";
+import { ArrowRight, MapPin, Phone, Mail } from "lucide-react";
+import { HeroSection } from "../components/HeroSection";
+import BlogSection from "../components/blogsection";
+import ScrollStack from "../components/ui/ScrollStack";
+import { ProductCard } from "../components/ProductCard";
+import { TestimonialCarousel } from "../components/TestimonialCarousel";
+import { mockProducts, mockCategories, mockBlogs } from "../data/mockData";
 
 export const Home: React.FC = () => {
   const recentProducts = mockProducts.slice(0, 4);
@@ -26,10 +27,18 @@ export const Home: React.FC = () => {
                 Ratnasmriti Gems and Jewellers
               </h2>
               <p className="text-lg text-gray-600 mb-6">
-                Ratnasmriti Gems and Jewellers is India’s most trusted gemstone and crystal showroom, proudly serving Shreerampore and Sarat Sarani. With a legacy of excellence, we specialize in authentic, high-quality gemstones, crystals, and bespoke jewellery that seamlessly blend traditional charm with modern elegance.
+                Ratnasmriti Gems and Jewellers is India’s most trusted gemstone
+                and crystal showroom, proudly serving Shreerampore and Sarat
+                Sarani. With a legacy of excellence, we specialize in authentic,
+                high-quality gemstones, crystals, and bespoke jewellery that
+                seamlessly blend traditional charm with modern elegance.
               </p>
               <p className="text-lg text-gray-600 mb-8">
-                Our store is led by Sanjay Sarkar, a passionate jewellery designer with over 20 years of experience in crafting exquisite pieces that captivate every heart. At Ratnasmriti Gems, we are committed to delivering not just jewellery, but trust, authenticity, and unmatched customer satisfaction.
+                Our store is led by Sanjay Sarkar, a passionate jewellery
+                designer with over 20 years of experience in crafting exquisite
+                pieces that captivate every heart. At Ratnasmriti Gems, we are
+                committed to delivering not just jewellery, but trust,
+                authenticity, and unmatched customer satisfaction.
               </p>
               <Link
                 to="/about"
@@ -56,8 +65,12 @@ export const Home: React.FC = () => {
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Recent Arrivals</h2>
-            <p className="text-lg text-gray-600">Discover our latest collection of stunning jewelry pieces</p>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Recent Arrivals
+            </h2>
+            <p className="text-lg text-gray-600">
+              Discover our latest collection of stunning jewelry pieces
+            </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
             {recentProducts.map((product) => (
@@ -71,8 +84,12 @@ export const Home: React.FC = () => {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Shop by Category</h2>
-            <p className="text-lg text-gray-600">Explore our diverse range of jewelry collections</p>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Shop by Category
+            </h2>
+            <p className="text-lg text-gray-600">
+              Explore our diverse range of jewelry collections
+            </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {mockCategories.slice(0, 4).map((category) => (
@@ -89,8 +106,12 @@ export const Home: React.FC = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
                   <div className="absolute bottom-6 left-6">
-                    <h3 className="text-white font-bold text-xl mb-2">{category.name}</h3>
-                    <p className="text-gray-200 text-sm">{category.productCount} items</p>
+                    <h3 className="text-white font-bold text-xl mb-2">
+                      {category.name}
+                    </h3>
+                    <p className="text-gray-200 text-sm">
+                      {category.productCount} items
+                    </p>
                   </div>
                 </div>
               </Link>
@@ -112,8 +133,12 @@ export const Home: React.FC = () => {
       <section className="py-20 bg-gradient-to-br from-rose-50 to-purple-50">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Bestsellers</h2>
-            <p className="text-lg text-gray-600">Our most loved pieces chosen by customers worldwide</p>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Bestsellers
+            </h2>
+            <p className="text-lg text-gray-600">
+              Our most loved pieces chosen by customers worldwide
+            </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
             {mostSoldProducts.map((product) => (
@@ -124,7 +149,7 @@ export const Home: React.FC = () => {
       </section>
 
       {/* Blog Section */}
-      <section className="py-20 bg-white">
+      {/* <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Latest from Our Blog</h2>
@@ -168,7 +193,11 @@ export const Home: React.FC = () => {
             </Link>
           </div>
         </div>
-      </section>
+      </section> */}
+
+      <ScrollStack className="bg-white">
+        <BlogSection featuredBlogs={featuredBlogs} />
+      </ScrollStack>
 
       {/* Testimonials */}
       <TestimonialCarousel />
@@ -184,7 +213,9 @@ export const Home: React.FC = () => {
                   <MapPin className="h-6 w-6 text-rose-400 mt-1" />
                   <div>
                     <h3 className="font-semibold text-lg mb-1">Address</h3>
-                    <p className="text-gray-300">123 Jewelry Street, Downtown District, New York, NY 10001</p>
+                    <p className="text-gray-300">
+                      123 Jewelry Street, Downtown District, New York, NY 10001
+                    </p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-4">

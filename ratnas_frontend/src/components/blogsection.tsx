@@ -1,0 +1,62 @@
+import { Link } from "react-router-dom";
+import { ScrollStackItem } from "./ui/ScrollStack";
+
+interface Blog {
+  id: string;
+  image: string;
+  category: string;
+  title: string;
+  excerpt: string;
+  date: string;
+}
+
+export default function BlogSection({ featuredBlogs }: { featuredBlogs: Blog[] }) {
+  return (
+    <section className="py-20 bg-white">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold text-gray-900">Latest from Our Blog</h2>
+          <p className="mt-3 text-lg text-gray-600">
+            Stay updated with jewelry trends, care tips, and stories
+          </p>
+        </div>
+
+        {featuredBlogs.map((blog,i) => (
+          <ScrollStackItem key={blog.id} index={i}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+              {/* Left Image */}
+              <div className="w-full h-72 md:h-80 rounded-2xl overflow-hidden shadow-md">
+                <img
+                  src={blog.image}
+                  alt={blog.title}
+                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                />
+              </div>
+
+              {/* Right Content */}
+              <div className="flex flex-col justify-center">
+                <div className="text-sm font-medium text-rose-600 mb-2">
+                  {blog.category}
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-3">
+                  {blog.title}
+                </h3>
+                <p className="text-gray-600 mb-6">{blog.excerpt}</p>
+
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-gray-500">{blog.date}</span>
+                  <Link
+                    to="/blog"
+                    className="text-rose-600 font-medium hover:underline"
+                  >
+                    Read More →
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </ScrollStackItem>
+        ))}
+      </div>
+    </section>
+  );
+}

@@ -41,7 +41,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
   const [cards, setCards] = useState(defaultCards);
 
-  // Auto rotate cards
   useEffect(() => {
     const interval = setInterval(() => {
       setCards((prev) => {
@@ -55,13 +54,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   }, [rotateInterval]);
 
   return (
-    <section className="relative w-full min-h-screen flex flex-col lg:flex-row items-center justify-center px-6 lg:px-24 py-12 bg-gray-900 overflow-hidden">
+    <section className="max-w-7xl pt-20 relative w-full min-h-screen flex flex-col-reverse lg:flex-row items-center gap-10 px-6 lg:px-24 py-12  overflow-hidden">
       {/* Left: Image Stack */}
-      <div className="relative w-full lg:w-1/2 flex justify-center items-center mb-12 lg:mb-0">
-        <div className="relative w-[75%] max-w-[400px] h-[400px] lg:h-[500px] perspective-1000">
-          {/* Dark overlay on images */}
-         
 
+      <div className="relative w-full lg:w-1/2 flex justify-start items-center">
+        <div className="relative w-[75%] max-w-[400px] h-[300px] sm:h-[400px] lg:h-[500px] perspective-1000">
           {cards.map((card, index) => {
             const randomRotate = Math.random() * 10 - 5;
             return (
@@ -88,44 +85,25 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               </motion.div>
             );
           })}
-
-          {/* Overlay Text for Mobile */}
-          <div className="absolute inset-0 lg:hidden flex flex-col justify-center items-center text-center px-4 z-20">
-            <h1 className="text-3xl sm:text-4xl font-bold mb-4 text-white">
-              Exquisite Royal Collection
-            </h1>
-            <p className="text-lg sm:text-xl text-gray-200 mb-6">
-              Discover timeless elegance with handcrafted perfection in every
-              detail.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link
-                to="/categories"
-                className="relative px-6 py-3 bg-gradient-to-r from-rose-600 to-purple-600 text-white font-semibold rounded-full hover:scale-105 transition-transform"
-              >
-                <span className="flex items-center space-x-2">
-                  <span>Explore Collection</span>
-                  <ArrowRight className="h-5 w-5" />
-                </span>
-              </Link>
-              <button className="px-6 py-3 border-2 border-white text-white font-semibold rounded-full hover:bg-white hover:text-gray-900 transition-all">
-                Watch Story
-              </button>
-            </div>
-          </div>
         </div>
       </div>
-
-      {/* Right: Content for Large Screens */}
-      <div className="hidden lg:flex w-1/2 text-left text-white max-w-xl flex-col justify-center">
-        <h1 className="text-5xl font-bold mb-6 leading-tight">
-          Exquisite Royal Collection
+      {/* Right: Content */}
+      <div className="w-full text-center lg:text-left text-black max-w-5xl flex flex-col justify-center mb-12 lg:mb-0">
+        <h1 className="text-xl sm:text-5xl font-bold mb-6">
+          Ratnasmriti Gems and Jewellers
         </h1>
-        <p className="text-2xl mb-8 text-gray-200">
-          Discover timeless elegance with handcrafted perfection in every
-          detail.
+        <p className="text-xl sm:text-2xl mb-8 text-gray-700">
+          Ratnasmriti Gems and Jewellers is India’s most trusted gemstone and
+          crystal showroom, proudly serving Shreerampore and Sarat Sarani. With
+          a legacy of excellence, we specialize in authentic, high-quality
+          gemstones, crystals, and bespoke jewellery that seamlessly blend
+          traditional charm with modern elegance. <br></br>Our store is led by
+          Sanjay Sarkar, a passionate jewellery designer with over 20 years of
+          experience in crafting exquisite pieces that captivate every heart. At
+          Ratnasmriti Gems, we are committed to delivering not just jewellery,
+          but trust, authenticity, and unmatched customer satisfaction.
         </p>
-        <div className="flex gap-4">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
           <Link
             to="/categories"
             className="relative px-8 py-4 bg-gradient-to-r from-rose-600 to-purple-600 text-white font-semibold rounded-full hover:scale-105 transition-transform"
