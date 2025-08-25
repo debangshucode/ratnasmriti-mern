@@ -1,22 +1,35 @@
-import jwt from 'jsonwebtoken'
+import jwt from "jsonwebtoken";
 
-// admin authentication middlewware 
-
-const authAdmin = async (req,res,next)=>{
-    try {
-        let token = req.headers.authorization?.split(" ")[1];
-        if(!token){
-            return res.json({success:false,message:'Not Authorized Login Again'})
-        }
-        const token_decode = jwt.verify(token,process.env.JWT_SECRET)
-
-        if(token_decode!== process.env.ADMIN_EMAIL + process.env.ADMIN_PASSWORD){
-            return res.json({success:false,message:'Not Authorized Login Again'})
-        }
-        next()
-    } catch (error) {
-        console.log(error)
-        res.json({success:false,message:error.message})
+// Admin authentication middleware
+const authAdmin = (req, res, next) => {
+  try {
+    // Get token from cookie
+    const token = req.cookies?.token;
+    if (!token) {
+      return res.json({
+        success: false,
+        message: "Not Authorized Login Again",
+      });
     }
-}
-export default authAdmin
+
+    // Verify token
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+    // Optional: check if email matches admin email
+    if (decoded.email !== process.env.ADMIN_EMAIL) {
+      return res.json({
+        success: false,
+        message: "Not Authorized Login Again",
+      });
+    }
+
+    // Token is valid
+    req.admin = decoded; // attach info to request if needed
+    next();
+  } catch (error) {
+    console.log(error);
+    res.json({ success: false, message: "Not Authorized Login Again" });
+  }
+};
+
+export default authAdmin;

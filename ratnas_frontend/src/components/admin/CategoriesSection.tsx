@@ -1,12 +1,46 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Plus, Edit3, Trash2 } from 'lucide-react';
-import { mockCategories } from '../../data/mockData';
+import axios from 'axios';
+
+interface Category {
+  _id: string;
+  Name: string;
+  Description?: string;
+  Image: string;
+  productCount?: number;
+}
 
 interface CategoriesSectionProps {
   setShowAddForm: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const CategoriesSection: React.FC<CategoriesSectionProps> = ({ setShowAddForm }) => {
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const baseUrl = import.meta.env.VITE_API_URL; // http://localhost:4000/api
+        const res = await axios.get(`${baseUrl}/admin/categories/main`, {
+          withCredentials: true
+        });
+
+        // Backend returns array directly
+        setCategories(res.data);
+      } catch (err) {
+        console.error(err);
+        alert('Server error fetching categories');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCategories();
+  }, []);
+
+  if (loading) return <p>Loading categories...</p>;
+
   return (
     <div>
       <div className="flex justify-between items-center mb-6">
@@ -21,12 +55,16 @@ export const CategoriesSection: React.FC<CategoriesSectionProps> = ({ setShowAdd
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {mockCategories.map(category => (
-          <div key={category.id} className="bg-white rounded-lg shadow p-6">
-            <img src={category.image} alt={category.name} className="w-full h-32 object-cover rounded-lg mb-4" />
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">{category.name}</h3>
-            <p className="text-gray-600 text-sm mb-3">{category.description}</p>
-            <p className="text-sm text-gray-500 mb-4">{category.productCount} products</p>
+        {categories.map(category => (
+          <div key={category._id} className="bg-white rounded-lg shadow p-6">
+            <img
+              src={`http://localhost:4000/uploads/${category.Image.split("\\").pop()}`} // construct proper URL
+              alt={category.Name}
+              className="w-full h-32 object-cover rounded-lg mb-4"
+            />
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">{category.Name}</h3>
+            <p className="text-gray-600 text-sm mb-3">{category.Description || 'No description'}</p>
+            <p className="text-sm text-gray-500 mb-4">{category.productCount || 0} products</p>
             <div className="flex space-x-2">
               <button className="text-yellow-600 hover:text-yellow-900">
                 <Edit3 className="h-4 w-4" />

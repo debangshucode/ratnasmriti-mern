@@ -1,12 +1,49 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Plus, Eye, Edit3, Trash2 } from 'lucide-react';
-import { mockProducts, mockCategories } from '../../data/mockData';
+import axios from 'axios';
+
+interface Product {
+  _id: string;
+  Name: string;
+  main_category: string;
+  price: number;
+  discount_price?: number;
+  Image: string;
+  inStock: boolean;
+}
 
 interface ProductsSectionProps {
   setShowAddForm: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const ProductsSection: React.FC<ProductsSectionProps> = ({ setShowAddForm }) => {
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+
+   
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const baseUrl = import.meta.env.VITE_API_URL; // http://localhost:4000/api
+        const res = await axios.get(`${baseUrl}/admin/categories/sub`, {
+          withCredentials: true, // include cookies for auth
+        });
+
+        // Backend returns array directly
+        setProducts(res.data);
+      } catch (err) {
+        console.error(err);
+        alert('Server error fetching products');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
+  if (loading) return <p>Loading products...</p>;
+
   return (
     <div>
       <div className="flex justify-between items-center mb-6">
@@ -25,23 +62,23 @@ export const ProductsSection: React.FC<ProductsSectionProps> = ({ setShowAddForm
           <thead className="bg-gray-50">
             <tr>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Product</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Category</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Description</th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Price</th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
-            {mockProducts.slice(0, 10).map(product => (
-              <tr key={product.id}>
+            {products.map(product => (
+              <tr key={product._id}>
                 <td className="px-6 py-4 whitespace-nowrap flex items-center">
-                  <img className="h-12 w-12 rounded-lg object-cover" src={product.image} alt="" />
+                  <img className="h-12 w-12 rounded-lg object-cover" src={product.Image} alt={product.Name} />
                   <div className="ml-4">
-                    <div className="text-sm font-medium text-gray-900">{product.name}</div>
-                    <div className="text-sm text-gray-500">ID: {product.id}</div>
+                    <div className="text-sm font-medium text-gray-900">{product.Name}</div>
+                    <div className="text-sm text-gray-500">ID: {product._id}</div>
                   </div>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{product.category}</td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{product.main_category}</td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${product.price}</td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
