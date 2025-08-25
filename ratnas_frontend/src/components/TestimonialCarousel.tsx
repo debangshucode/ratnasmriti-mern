@@ -100,7 +100,7 @@ export const TestimonialCarousel: React.FC = () => {
     <section className="py-20 bg-gradient-to-br from-purple-50 to-rose-50 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-6xl font-bold text-gray-900 mb-4">
             What Our Customers Say
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
