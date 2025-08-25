@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Heart } from "lucide-react";
 import axios from "axios";
-// import { WhatsAppModal } from "./WhatsAppModal";
+import { WhatsAppModal } from "./WhatsAppModal";
 
 interface Product {
   _id: string;
@@ -75,8 +75,8 @@ const ProductCardItem: React.FC<ProductCardProps> = ({ product, className = "" }
         {/* Image left */}
         <div className="relative w-1/3 min-w-[180px] h-auto">
           <img
-            src={product.image}
-            alt={product.name}
+            src={product.Image}
+            alt={product.Name}
             className="w-full h-full object-cover"
           />
           <div className="absolute top-3 left-3 flex flex-col space-y-2">
@@ -107,10 +107,10 @@ const ProductCardItem: React.FC<ProductCardProps> = ({ product, className = "" }
         <div className="flex flex-col justify-between p-6 w-2/3">
           <div>
             <div className="text-xs sm:text-sm text-gray-500">
-              {product.category}
+              {product.main_category}
             </div>
             <h3 className="text-sm sm:text-lg font-semibold text-gray-900 mb-2 line-clamp-2">
-              {product.name}
+              {product.Name}
             </h3>
             <div className="flex items-center space-x-2 mb-4">
               <span className="text-lg sm:text-xl font-bold text-gray-900">
@@ -143,11 +143,11 @@ const ProductCardItem: React.FC<ProductCardProps> = ({ product, className = "" }
       </div>
 
       {/* WhatsApp Modal */}
-      <WhatsAppModal
+      {/* <WhatsAppModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         product={product}
-      />
+      /> */}
     </>
   );
 };
