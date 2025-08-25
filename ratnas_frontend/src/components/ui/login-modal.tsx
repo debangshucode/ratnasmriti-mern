@@ -1,7 +1,8 @@
-"use client";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import Cookies from "js-cookie";
 
 interface LoginModalProps {
   isOpen: boolean;
@@ -10,6 +11,9 @@ interface LoginModalProps {
 
 export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
   const navigate = useNavigate();
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
@@ -24,12 +28,33 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
   const portalRoot = document.getElementById("modal-root");
   if (!portalRoot) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // You can add authentication logic here
-    onClose(); // close modal
-    navigate("/admin"); // go to admin page
-  };
+
+
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  try {
+    const baseUrl = import.meta.env.VITE_API_URL;
+    const response = await axios.post(`${baseUrl}/auth/login`, {
+      email,
+      password,
+    });
+
+    if (response.data.success) {
+      // ✅ Save token in cookie (7 days expiry)
+      Cookies.set("token", response.data.token, { expires: 7 });
+
+      onClose();
+      navigate("/admin");
+    } else {
+      alert(response.data.message || "Login failed");
+    }
+  } catch (err) {
+    console.error(err);
+    alert("Server error");
+  }
+};
+
 
   return createPortal(
     <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/50">
@@ -51,6 +76,8 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
               <label className="block text-sm mb-1">Email</label>
               <input
                 type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="w-full border rounded-lg p-2 text-black"
                 placeholder="you@example.com"
               />
@@ -59,6 +86,8 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
               <label className="block text-sm mb-1">Password</label>
               <input
                 type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 className="w-full border rounded-lg p-2 text-black"
                 placeholder="********"
               />
