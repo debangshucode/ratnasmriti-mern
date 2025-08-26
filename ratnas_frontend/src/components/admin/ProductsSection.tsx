@@ -25,7 +25,7 @@ export const ProductsSection: React.FC<ProductsSectionProps> = ({ setShowAddForm
     const fetchProducts = async () => {
       try {
         const baseUrl = import.meta.env.VITE_API_URL; // http://localhost:4000/api
-        const res = await axios.get(`${baseUrl}/admin/categories/sub`, {
+        const res = await axios.get(`${baseUrl}/api/admin/categories/main`, {
           withCredentials: true, // include cookies for auth
         });
 

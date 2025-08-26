@@ -22,7 +22,7 @@ export const CategoriesSection: React.FC<CategoriesSectionProps> = ({ setShowAdd
     const fetchCategories = async () => {
       try {
         const baseUrl = import.meta.env.VITE_API_URL; // http://localhost:4000/api
-        const res = await axios.get(`${baseUrl}/admin/categories/main`, {
+        const res = await axios.get(`${baseUrl}/api/admin/categories/main`, {
           withCredentials: true
         });
 

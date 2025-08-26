@@ -22,7 +22,7 @@ export const AddFormModal: React.FC<AddFormModalProps> = ({ activeSection, setSh
     const fetchCategories = async () => {
       try {
         const baseUrl = import.meta.env.VITE_API_URL; // http://localhost:4000/api
-        const res = await axios.get(`${baseUrl}/admin/categories/main`, {
+        const res = await axios.get(`${baseUrl}/api/admin/categories/main`, {
           withCredentials: true
         });
 
@@ -47,13 +47,13 @@ export const AddFormModal: React.FC<AddFormModalProps> = ({ activeSection, setSh
     let endpoint = '';
     switch (activeSection) {
       case 'products':
-        endpoint = `${baseUrl}/admin/categories/sub`;
+        endpoint = `${baseUrl}/api/admin/categories/sub`;
         break;
       case 'categories':
-        endpoint = `${baseUrl}/admin/categories/main`;
+        endpoint = `${baseUrl}/api/admin/categories/main`;
         break;
       case 'blogs':
-        endpoint = `${baseUrl}/api/blogs`;
+        endpoint = `${baseUrl}/api/admin/blogs`;
         break;
       default:
         console.error('Unknown section');

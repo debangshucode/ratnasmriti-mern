@@ -11,7 +11,7 @@ interface Blog {
   date: string;
 }
 
-export  const  BlogSection: React.FC = () => {
+export const BlogSection: React.FC = () => {
 
   const {data :blogs , loading:blogLoaing  } = useBlogs();
   return (

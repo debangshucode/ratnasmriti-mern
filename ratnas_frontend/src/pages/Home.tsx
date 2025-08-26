@@ -2,13 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, MapPin, Phone, Mail } from "lucide-react";
 import { HeroSection } from "../components/HeroSection";
-import BlogSection from "../components/blogsection";
 import ScrollStack from "../components/ui/ScrollStack";
 import { ProductCard } from "../components/ProductCard";
 import { TestimonialCarousel } from "../components/TestimonialCarousel";
 import { mockProducts, mockCategories, mockBlogs } from "../data/mockData";
 import "../index.css";
 import { useMainCategories } from "../hook/apiHooks";
+import { BlogSection } from "../components/blogsection";
 
 export const Home: React.FC = () => {
   const recentProducts = mockProducts.slice(0, 4);
@@ -157,7 +157,7 @@ export const Home: React.FC = () => {
       </section>
 
       <ScrollStack className="bg-[#FAF7F0] hide-scrollbar">
-        <BlogSection  />
+        <BlogSection />
       </ScrollStack>
       <div className="w-full bg-[#FAF7F0]  flex justify-center self-end pt-5 pb-10">
         <Link
