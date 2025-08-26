@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { ScrollStackItem } from "./ui/ScrollStack";
+import { useBlogs } from "../hook/apiHooks";
 
 interface Blog {
   id: string;
@@ -10,7 +11,9 @@ interface Blog {
   date: string;
 }
 
-export default function BlogSection({ featuredBlogs }: { featuredBlogs: Blog[] }) {
+export  const  BlogSection: React.FC = () => {
+
+  const {data :blogs , loading:blogLoaing  } = useBlogs();
   return (
     <section className="py-20  hide-scrollbar">
       <div className="max-w-7xl mx-auto ">
@@ -21,13 +24,13 @@ export default function BlogSection({ featuredBlogs }: { featuredBlogs: Blog[] }
           </p>
         </div>
 
-        {featuredBlogs.map((blog,i) => (
-          <ScrollStackItem key={blog.id} index={i}>
+        {blogs?.map((blog,i) => (
+          <ScrollStackItem key={blog._id} index={i}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
               {/* Left Image */}
               <div className="w-full h-72 md:h-80 rounded-2xl overflow-hidden shadow-md">
                 <img
-                  src={blog.image}
+                  src={`${import.meta.env.VITE_API_URL}/${blog.image}`}
                   alt={blog.title}
                   className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
                 />
@@ -35,9 +38,9 @@ export default function BlogSection({ featuredBlogs }: { featuredBlogs: Blog[] }
 
               {/* Right Content */}
               <div className="flex flex-col justify-center">
-                <div className="text-md font-medium text-[#e57373] mb-2">
+                {/* <div className="text-md font-medium text-[#e57373] mb-2">
                   {blog.category}
-                </div>
+                </div> */}
                 <h3 className="text-2xl font-bold text-gray-900 mb-3">
                   {blog.title}
                 </h3>

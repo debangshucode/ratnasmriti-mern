@@ -19,8 +19,15 @@ export const getHomeData = async (req, res) => {
 export const createPost = async (req, res) => {
   try {
     const { Name, content, price, discounted_price, status, section } = req.body;
+
+    let imagePath = "";
+    if (req.file) {
+      // Save only relative path instead of full Windows path
+      imagePath = `uploads/${req.file.filename}`;
+    }
+
     const newPost = new Post({
-      featured_image: req.file ? req.file.path : "",
+      featured_image: imagePath,
       Name,
       content,
       price,

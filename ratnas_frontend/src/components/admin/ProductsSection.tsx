@@ -69,7 +69,7 @@ export const ProductsSection: React.FC<ProductsSectionProps> = ({ setShowAddForm
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
-            {products.map(product => (
+            { products.length > 0 && products.map(product => (
               <tr key={product._id}>
                 <td className="px-6 py-4 whitespace-nowrap flex items-center">
                   <img className="h-12 w-12 rounded-lg object-cover" src={product.Image} alt={product.Name} />

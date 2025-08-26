@@ -6,9 +6,14 @@ import Blog from "../models/Blog.js";
 // CREATE Blog
 export const createBlog = async (req, res) => {
   try {
+    let imagePath = "";
+    if (req.file) {
+      // Save only relative path instead of full Windows path
+      imagePath = `uploads/${req.file.filename}`;
+    }
     const blog = new Blog({
       title: req.body.title,
-      image: req.file ? req.file.path : "",
+      image: imagePath,
       content: req.body.content,
       author: req.body.author,
     });
@@ -28,3 +33,5 @@ export const getBlogs = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+

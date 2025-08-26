@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
 import { X, MessageCircle } from 'lucide-react';
+import { Post } from '../types';
 
-interface Product {
-  id: string;
-  name: string;
-  price: number;
-  image: string;
-  category: string;
-}
+// interface Product {
+//   id: string;
+//   name: string;
+//   price: number;
+//   image: string;
+//   category: string;
+// }
 
 interface WhatsAppModalProps {
   isOpen: boolean;
   onClose: () => void;
-  product: Product;
+  product: Post;
 }
 
 export const WhatsAppModal: React.FC<WhatsAppModalProps> = ({ isOpen, onClose, product }) => {
@@ -40,16 +41,16 @@ Email: ${customerInfo.email}
 Address: ${customerInfo.address}
 
 💎 *Product Details:*
-Name: ${product.name}
-Category: ${product.category}
+Name: ${product.Name}
+Category: ${product.section}
 Price: $${product.price.toFixed(2)}
-Product ID: ${product.id}
+Product ID: ${product._id}
 
 💬 *Additional Message:*
 ${customerInfo.message || 'No additional message'}
 
 ---
-*Sent from RoyalGems Website*
+*Sent from Ratnasmriti Gems and Jewellers Website*
     `.trim();
 
     // WhatsApp business number (replace with actual number)
@@ -94,13 +95,13 @@ ${customerInfo.message || 'No additional message'}
         <div className="p-6 bg-gray-50 border-b">
           <div className="flex items-center space-x-4">
             <img
-              src={product.image}
-              alt={product.name}
+              src={`${import.meta.env.VITE_API_URL}/${product.featured_image}`}
+              alt={product.Name}
               className="w-16 h-16 object-cover rounded-lg"
             />
             <div>
-              <h3 className="font-semibold text-gray-900">{product.name}</h3>
-              <p className="text-gray-600">{product.category}</p>
+              <h3 className="font-semibold text-gray-900">{product.Name}</h3>
+              <p className="text-gray-600">{product.section}</p>
               <p className="text-lg font-bold text-rose-600">${product.price.toFixed(2)}</p>
             </div>
           </div>
@@ -118,6 +119,38 @@ ${customerInfo.message || 'No additional message'}
               name="name"
               required
               value={customerInfo.name}
+              onChange={handleChange}
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent"
+              placeholder="Enter your full name"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+              Phone Number *
+            </label>
+            <input
+              type="number"
+              id="phone"
+              name="phone"
+              required
+              value={customerInfo.phone}
+              onChange={handleChange}
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent"
+              placeholder="Enter your full name"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+              Email Address *
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              value={customerInfo.email}
               onChange={handleChange}
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent"
               placeholder="Enter your full name"
