@@ -1,12 +1,13 @@
 import React from 'react';
 import { Plus, Eye, Edit3, Trash2 } from 'lucide-react';
-import { mockBlogs } from '../../data/mockData';
+import { useBlogs } from '../../hook/apiHooks';
 
 interface BlogsSectionProps {
   setShowAddForm: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const BlogsSection: React.FC<BlogsSectionProps> = ({ setShowAddForm }) => {
+  const {data : blogs} = useBlogs();
   return (
     <div>
       <div className="flex justify-between items-center mb-6">
@@ -32,10 +33,10 @@ export const BlogsSection: React.FC<BlogsSectionProps> = ({ setShowAddForm }) =>
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
-            {mockBlogs.map(blog => (
-              <tr key={blog.id}>
+            {blogs?.map(blog => (
+              <tr key={blog._id}>
                 <td className="px-6 py-4 whitespace-nowrap flex items-center">
-                  <img className="h-12 w-12 rounded-lg object-cover" src={blog.image} alt="" />
+                  <img className="h-12 w-12 rounded-lg object-cover" src={`${import.meta.env.VITE_API_URL}/${blog.image}`} alt="" />
                   <div className="ml-4">
                     <div className="text-sm font-medium text-gray-900">{blog.title}</div>
                     <div className="text-sm text-gray-500">{blog.readTime}</div>
