@@ -58,7 +58,7 @@ export const CategoriesSection: React.FC<CategoriesSectionProps> = ({ setShowAdd
         {categories.map(category => (
           <div key={category._id} className="bg-white rounded-lg shadow p-6">
             <img
-              src={`http://localhost:4000/uploads/${category.Image.split("\\").pop()}`} // construct proper URL
+              src={`${import.meta.env.VITE_API_URL}/${category.Image}`} // construct proper URL
               alt={category.Name}
               className="w-full h-32 object-cover rounded-lg mb-4"
             />

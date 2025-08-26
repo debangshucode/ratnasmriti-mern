@@ -72,7 +72,7 @@ export const ProductsSection: React.FC<ProductsSectionProps> = ({ setShowAddForm
             { products.length > 0 && products.map(product => (
               <tr key={product._id}>
                 <td className="px-6 py-4 whitespace-nowrap flex items-center">
-                  <img className="h-12 w-12 rounded-lg object-cover" src={product.Image} alt={product.Name} />
+                  <img className="h-12 w-12 rounded-lg object-cover" src={`${import.meta.env.VITE_API_URL}/${product.Image}`} alt={product.Name} />
                   <div className="ml-4">
                     <div className="text-sm font-medium text-gray-900">{product.Name}</div>
                     <div className="text-sm text-gray-500">ID: {product._id}</div>
