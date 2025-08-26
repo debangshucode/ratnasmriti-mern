@@ -6,6 +6,7 @@ import { BlogsSection } from '../components/admin/BlogsSection';
 import { OrdersSection } from '../components/admin/OrdersSection';
 import { AddFormModal } from '../components/admin/AddFormModal';
 import { AdminSection } from '../types';
+import { SubCategoriesSection } from '../components/admin/SubCategoriesSection';
 
 export const AdminPage: React.FC = () => {
   const [activeSection, setActiveSection] = useState<AdminSection>('products');
@@ -24,6 +25,7 @@ export const AdminPage: React.FC = () => {
         <div>
           {activeSection === 'products' && <ProductsSection setShowAddForm={setShowAddForm} />}
           {activeSection === 'categories' && <CategoriesSection setShowAddForm={setShowAddForm} />}
+          {activeSection === 'subcategories' && <SubCategoriesSection setShowAddForm={setShowAddForm} />}
           {activeSection === 'blogs' && <BlogsSection setShowAddForm={setShowAddForm} />}
           {activeSection === 'orders' && <OrdersSection />}
         </div>

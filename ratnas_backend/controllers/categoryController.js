@@ -74,9 +74,9 @@ export const createSubCategory = async (req, res) => {
       main_category: req.body.main_category,
       Name: req.body.Name,
       Image: imagePath,
-      product_name: req.body.product_name,
+      // product_name: req.body.product_name,
       price: req.body.price,
-      discount_price: req.body.discount_price,
+      discounted_price: req.body.discounted_price,
       Description: req.body.Description,
       product_information: req.body.product_information,
     });

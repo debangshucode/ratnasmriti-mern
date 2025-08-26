@@ -1,5 +1,5 @@
 import React from 'react';
-type AdminSection = 'products' | 'categories' | 'blogs' | 'orders';
+type AdminSection = 'products' | 'categories' | 'subcategories' | 'blogs' | 'orders';
 
 
 interface AdminTabsProps {
@@ -9,8 +9,9 @@ interface AdminTabsProps {
 
 export const AdminTabs: React.FC<AdminTabsProps> = ({ activeSection, setActiveSection }) => {
   const tabs = [
-    { id: 'products', label: 'Products' },
+    { id: 'products', label: 'Recent Products' },
     { id: 'categories', label: 'Categories' },
+    { id: 'subcategories', label: 'Sub Categories' },
     { id: 'blogs', label: 'Blog Posts' },
     { id: 'orders', label: 'Orders' },
   ];

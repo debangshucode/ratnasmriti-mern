@@ -39,7 +39,7 @@ export const BlogsSection: React.FC<BlogsSectionProps> = ({ setShowAddForm }) =>
                   <img className="h-12 w-12 rounded-lg object-cover" src={`${import.meta.env.VITE_API_URL}/${blog.image}`} alt="" />
                   <div className="ml-4">
                     <div className="text-sm font-medium text-gray-900">{blog.title}</div>
-                    <div className="text-sm text-gray-500">{blog.readTime}</div>
+                    {/* <div className="text-sm text-gray-500">{blog.readTime}</div> */}
                   </div>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{blog.author}</td>
