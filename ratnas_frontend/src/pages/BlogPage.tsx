@@ -1,8 +1,26 @@
-import React from 'react';
-import { Calendar, Clock, User } from 'lucide-react';
-import { mockBlogs } from '../data/mockData';
+import React from "react";
+import { Calendar, Clock, User } from "lucide-react";
+import { useBlogs } from "../hook/apiHooks"; // adjust path if needed
 
 export const BlogPage: React.FC = () => {
+  const { data: blogs, loading, error } = useBlogs();
+
+  if (loading) {
+    return (
+      <div className="pt-24 pb-20 text-center text-gray-600">
+        Loading blogs...
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="pt-24 pb-20 text-center text-red-600">
+        Failed to load blogs: {error.message}
+      </div>
+    );
+  }
+
   return (
     <div className="pt-24 pb-20">
       <div className="max-w-7xl mx-auto px-4">
@@ -12,23 +30,24 @@ export const BlogPage: React.FC = () => {
             Jewelry Insights & Stories
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Discover the latest trends, care tips, and fascinating stories from the world of jewelry.
+            Discover the latest trends, care tips, and fascinating stories from
+            the world of jewelry.
           </p>
         </div>
 
         {/* Blog Posts */}
         <div className="space-y-8">
-          {mockBlogs.map((blog) => (
+          {blogs?.map((blog) => (
             <article
-              key={blog.id}
+              key={blog._id}
               className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 group"
             >
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {/* Image - 30% width on desktop */}
+                {/* Image */}
                 <div className="md:col-span-1">
                   <div className="aspect-video md:aspect-square relative overflow-hidden">
                     <img
-                      src={blog.image}
+                      src={`${import.meta.env.VITE_API_URL}/${blog.image}`}
                       alt={blog.title}
                       className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                     />
@@ -40,7 +59,7 @@ export const BlogPage: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Content - 70% width on desktop */}
+                {/* Content */}
                 <div className="md:col-span-2 p-6 md:p-8 flex flex-col justify-between">
                   <div>
                     <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 group-hover:text-rose-600 transition-colors">
@@ -72,17 +91,12 @@ export const BlogPage: React.FC = () => {
                         <span>{blog.readTime}</span>
                       </div>
                     </div>
-
-                    {/* Read More Button */}
-                   
                   </div>
                 </div>
               </div>
             </article>
           ))}
         </div>
-
-       
       </div>
     </div>
   );

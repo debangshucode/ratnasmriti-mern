@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { Filter, Grid, List } from "lucide-react";
-import { ProductCard } from "../components/ProductCard";
+// import { ProductCard } from "../components/ProductCard";
 import { useMainCategories, useSubCategories, useSubCategoriesByMain } from "../hook/apiHooks";
 import ProductDisplay from "../components/ProductDisplay";
 

@@ -39,7 +39,7 @@ const ProductDisplay: React.FC<ProductCardProps> = ({ product }) => {
         <div className="relative w-full h-48 sm:h-56 bg-gray-100 overflow-hidden">
           {Image ? (
             <img
-              src={`http://localhost:5000/${Image}`}
+              src={`${import.meta.env.VITE_API_URL}/${Image}`}
               alt={Name}
               className="w-full h-full object-cover"
             //   onError={(e) => {
