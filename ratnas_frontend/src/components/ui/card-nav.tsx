@@ -174,7 +174,7 @@ const CardNav: React.FC<CardNavProps> = ({
           <div
             className={`hamburger-menu ${
               isHamburgerOpen ? "open" : ""
-            } group h-full flex flex-col items-center justify-center cursor-pointer gap-[6px] order-2 md:order-none`}
+            } group h-full flex flex-col items-center justify-center cursor-pointer gap-[6px]  md:order-none`}
             onClick={toggleMenu}
             role="button"
             aria-label={isExpanded ? "Close menu" : "Open menu"}

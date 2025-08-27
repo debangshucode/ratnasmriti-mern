@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, MapPin} from "lucide-react";
 import { HeroSection } from "../components/HeroSection";
-import ScrollStack from "../components/ui/ScrollStack";
 import { ProductCard } from "../components/ProductCard";
 import { TestimonialCarousel } from "../components/TestimonialCarousel";
 import "../index.css";
@@ -77,10 +76,10 @@ export const Home: React.FC = () => {
         <HeroSection />
       </div>
       {/* Recent Products */}
-      <section className="py-20 bg-yellow-orange-gradient ">
+      <section className="py-8 lg:py20 bg-yellow-orange-gradient ">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h1 className="text-6xl font-bold text-bgLight mb-4">
+            <h1 className="text-3xl lg:text-6xl font-bold text-bgLight mb-4">
               Recent Arrivals
             </h1>
             <p className="text-lg text-darkBrown">
@@ -96,10 +95,10 @@ export const Home: React.FC = () => {
       </section>
 
       {/* Shop by Category */}
-      <section className="py-20 bg-yellow-light-gradient">
+      <section className="py-8 lg:py20 bg-yellow-light-gradient">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h1 className="text-6xl font-bold text-orangeAccent mb-4">
+            <h1 className="text-3xl lg:text-6xl font-bold text-orangeAccent mb-4">
               Shop by Category
             </h1>
             <p className="text-lg text-darkBrown">
@@ -136,7 +135,7 @@ export const Home: React.FC = () => {
           <div className="text-center mt-12">
             <Link
               to="/categories"
-              className="inline-flex items-center space-x-2 bg-gradient-to-r from-rose-600 to-purple-600 text-white px-8 py-3 rounded-full hover:shadow-lg transition-all"
+              className="inline-flex items-center space-x-2  bg-dark-orange-270-gradient text-white px-8 py-3 rounded-full hover:shadow-lg transition-all"
             >
               <span className="text-xl">View All Categories</span>
               <ArrowRight className="h-5 w-5" />
@@ -146,10 +145,10 @@ export const Home: React.FC = () => {
       </section>
 
       {/* Most Sold Products */}
-      <section className="py-20 bg-bgLight ">
+      <section className="py-8 lg:py20 bg-bgLight ">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-6xl font-bold text-darkBrown mb-4">
+            <h2 className="text-3xl lg:text-6xl font-bold text-darkBrown mb-4">
               Bestsellers
             </h2>
             <p className="text-lg text-orangeAccent">
@@ -173,7 +172,7 @@ export const Home: React.FC = () => {
       <TestimonialCarousel />
 
       {/* Contact & Location */}
-      <section className="py-20 bg-yellow-orange-gradient-r text-white">
+      <section className="py-8 lg:py20 bg-yellow-orange-gradient-r text-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Map 1 */}

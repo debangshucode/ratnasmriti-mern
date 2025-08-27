@@ -1,36 +1,46 @@
 import React from "react";
 import CardNav from "./ui/card-nav";
-// import logo from "./logo.svg";
+import { useMainCategories, useBlogs } from "../hook/apiHooks";
 
 export const Navigation: React.FC = () => {
- const items = [
- 
+  const { data: categories } = useMainCategories();
+  const { data: blogs } = useBlogs();
 
-  {
-    href: "/categories",
-    label: "Categories",
-    bgColor: "#1030ffff",
-    textColor: "#000",
-    links: [
-      { href: "/categories/ruby", label: "Ruby", bgColor: "#fff", textColor: "#000", ariaLabel: "Ruby Category", links: [] },
-      { href: "/categories/emerald", label: "Emerald", bgColor: "#fff", textColor: "#000", ariaLabel: "Emerald Category", links: [] },
-      { href: "/categories/sapphire", label: "Sapphire", bgColor: "#fff", textColor: "#000", ariaLabel: "Sapphire Category", links: [] }
-    ]
-  },
-
-  {
-    href: "/blog",
-    label: "Blog",
-    bgColor: "#fff",
-    textColor: "#000",
-    links: [
-      { href: "/blog/post-1", label: "Post 1", bgColor: "#fff", textColor: "#000", ariaLabel: "Blog Post 1", links: [] },
-      { href: "/blog/post-2", label: "Post 2", bgColor: "#fff", textColor: "#000", ariaLabel: "Blog Post 2", links: [] }
-    ]
-  },
-
-  
-];
+  const items = [
+    {
+      href: "/categories",
+      label: "Categories",
+      bgColor: "#4F200D",
+      textColor: "#FF9A00",
+      links:
+        categories?.slice(0, 3).map((category) => ({
+          href: `/category/${category._id}`,
+          label: category.Name, // API gives "Name"
+          bgColor: "#fff",
+          textColor: "#000",
+          ariaLabel: `${category.Name} Category`,
+          links: [],
+        })) ?? [],
+    },
+    {
+      href: "/blog",
+      label: "Blog",
+      bgColor: "#FF9A00",
+      textColor: "#4F200D",
+      links:
+        blogs?.slice(0, 3).map((blog) => ({
+          href: `/blog/${blog._id}`,
+          label:
+            blog.title.length > 20
+              ? blog.title.slice(0, 20) + "..."
+              : blog.title,
+          bgColor: "#fff",
+          textColor: "#000",
+          ariaLabel: blog.title,
+          links: [],
+        })) ?? [],
+    },
+  ];
 
   return (
     <CardNav

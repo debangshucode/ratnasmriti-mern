@@ -6,7 +6,7 @@ export const BlogSection: React.FC = () => {
 
   if (blogLoading) {
     return (
-      <div className="text-center py-20">
+      <div className="text-center py-15 lg:py20">
         <div className="animate-pulse">
           <div className="h-6 bg-gray-200 rounded w-36 mx-auto mb-3"></div>
           <div className="h-3 bg-gray-100 rounded w-24 mx-auto"></div>
@@ -22,7 +22,7 @@ export const BlogSection: React.FC = () => {
   }
 
   return (
-    <section className="py-12 md:py-20 bg-gradient-to-b from-gray-50 to-white">
+    <section className="py-8 lg:py20 bg-gradient-to-b from-gray-50 to-white">
       <div className="max-w-7xl mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-12 md:mb-16 animate-fade-in">
@@ -171,7 +171,7 @@ export const BlogSection: React.FC = () => {
         <div className="flex justify-center mt-6 md:mt-8">
           <Link
             to="/blog"
-            className="group relative inline-flex items-center space-x-2 md:space-x-3 bg-gradient-to-r from-[#e57373] to-[#d45a5a] text-white font-bold px-6 md:px-12 py-2 md:py-4 rounded-full shadow-lg hover:shadow-2xl transition-all hover:-translate-y-1 hover:scale-105"
+            className="group relative inline-flex items-center space-x-2 md:space-x-3  bg-dark-orange-270-gradient text-white font-bold px-6 md:px-12 py-2 md:py-4 rounded-full shadow-lg hover:shadow-2xl transition-all hover:-translate-y-1 hover:scale-105"
           >
             <span className="text-sm md:text-lg">View All Blogs</span>
             <div className="w-6 h-6 md:w-8 md:h-8 bg-white/20 rounded-full flex items-center justify-center group-hover:bg-white/30">
