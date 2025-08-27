@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import { Filter, Grid, List } from "lucide-react";
+import { Filter} from "lucide-react";
 import { Helmet } from "react-helmet";
-// import { ProductCard } from "../components/ProductCard";
 import { useSubCategoriesByMain } from "../hook/apiHooks";
-import ProductDisplay from "../components/ProductDisplay";
+import { ProductCard } from "../components/ProductCard";
 
 export const CategoryProducts: React.FC = () => {
   const { categoryId } = useParams<{ categoryId: string }>();
-  const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [sortBy, setSortBy] = useState("name");
   const [priceRange] = useState<[number, number]>([0, 5000]);
 
@@ -47,7 +45,7 @@ export const CategoryProducts: React.FC = () => {
   }
 
   return (
-    <div className="pt-24 pb-20">
+    <div className="pt-32 pb-20">
        <Helmet>
         <title>{category.Name} | Ratnasmriti Gems</title>
         <meta
@@ -65,7 +63,7 @@ export const CategoryProducts: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4">
         {/* Header */}
         <div className="mb-12">
-          <h1 className="text-5xl font-bold text-gray-900 mb-4">
+          <h1 className="text-3xl md:text-6xl font-bold text-gray-900 mb-4">
             {category.Name}
           </h1>
           <p className="text-xl text-gray-600 mb-8">
@@ -92,45 +90,18 @@ export const CategoryProducts: React.FC = () => {
               <span className="text-gray-600">
                 {filteredProducts.length} products
               </span>
-              <div className="flex items-center border border-gray-300 rounded-lg p-1">
-                <button
-                  onClick={() => setViewMode("grid")}
-                  className={`p-2 rounded ${
-                    viewMode === "grid"
-                      ? "bg-rose-600 text-white"
-                      : "text-gray-600"
-                  }`}
-                >
-                  <Grid className="h-4 w-4" />
-                </button>
-                <button
-                  onClick={() => setViewMode("list")}
-                  className={`p-2 rounded ${
-                    viewMode === "list"
-                      ? "bg-rose-600 text-white"
-                      : "text-gray-600"
-                  }`}
-                >
-                  <List className="h-4 w-4" />
-                </button>
-              </div>
+             
             </div>
           </div>
         </div>
 
         {/* Products */}
         <div
-          className={`grid gap-8 ${
-            viewMode === "grid"
-              ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
-              : "grid-cols-1"
-          }`}
+          className={"grid gap-8 grid-cols-1"} 
         >
           {filteredProducts.map((product) => (
-            <ProductDisplay
+            <ProductCard
               key={product._id}
-              product={product}
-              className={viewMode === "list" ? "md:flex md:space-x-6" : ""}
             />
           ))}
         </div>

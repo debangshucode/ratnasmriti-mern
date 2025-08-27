@@ -98,7 +98,7 @@ export const Home: React.FC = () => {
       <section className="py-8 lg:py20 bg-yellow-light-gradient">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h1 className="text-3xl lg:text-6xl font-bold text-orangeAccent mb-4">
+            <h1 className="text-3xl lg:text-6xl font-bold text-darkBrown mb-4">
               Shop by Category
             </h1>
             <p className="text-lg text-darkBrown">

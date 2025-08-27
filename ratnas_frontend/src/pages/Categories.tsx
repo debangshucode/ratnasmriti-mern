@@ -6,7 +6,7 @@ import { Helmet } from "react-helmet";
 export const Categories: React.FC = () => {
   const {data : categories} = useMainCategories();
   return (
-    <div className="pt-24 pb-20">
+    <div className="pt-32 pb-20">
        <Helmet>
         <title>Shop Jewelry by Category | Best in Kolkata,Hooghly</title>
         <meta 
@@ -27,7 +27,7 @@ export const Categories: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-16">
-          <h1 className="text-5xl font-bold text-darkBrown mb-4">
+          <h1 className="text-3xl md:text-6xl font-bold text-darkBrown mb-4">
             Shop by Category
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">

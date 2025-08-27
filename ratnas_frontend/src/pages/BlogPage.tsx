@@ -22,7 +22,7 @@ export const BlogPage: React.FC = () => {
   }
 
   return (
-    <div className="pt-24 pb-20">
+    <div className="pt-32 pb-20 bg-dark-orange-gradient">
         <Helmet>
         <title>Jewelry Insights & Stories – Ratnasmriti Gems, Chinsurah</title>
         <meta
@@ -63,53 +63,47 @@ export const BlogPage: React.FC = () => {
         </script>
       </Helmet>
 
-      <div className="max-w-7xl mx-auto px-4">
+      <div className="max-w-9xl mx-auto px-12">
         {/* Header */}
         <div className="text-center mb-16">
-          <h1 className="text-5xl font-bold text-gray-900 mb-4">
+          <h1 className="text-3xl md:text-6xl font-bold text-bgLight mb-4">
             Jewelry Insights & Stories
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-yellowAccent max-w-3xl mx-auto">
             Discover the latest trends, care tips, and fascinating stories from
             the world of jewelry.
           </p>
         </div>
 
         {/* Blog Posts */}
-        <div className="space-y-8">
+        <div className="space-y-4 md:space-y-8">
           {blogs?.map((blog) => (
             <article
               key={blog._id}
-              className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 group"
+              className="bg-yellow-orange-gradient-r border rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 group"
             >
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-1 md:gap-6 h-[400px] ">
                 {/* Image */}
-                <div className="md:col-span-1">
-                  <div className="aspect-video md:aspect-square relative overflow-hidden">
+                <div className="md:col-span-1 flex justify-center items-center">
+                  <div className="aspect-video md:aspect-square h-full relative overflow-hidden">
                     <img
                       src={`${import.meta.env.VITE_API_URL}/${blog.image}`}
                       alt={blog.title}
-                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                      className="w-full h-full object-cover item-center transition-transform duration-300 group-hover:scale-110"
                     />
-                    <div className="absolute top-4 left-4">
-                      <span className="px-3 py-1 bg-rose-600 text-white text-sm font-semibold rounded-full">
-                        {blog.category}
-                      </span>
-                    </div>
+                    
                   </div>
                 </div>
 
                 {/* Content */}
-                <div className="md:col-span-2 p-6 md:p-8 flex flex-col justify-between">
+                <div className="md:col-span-2 p-2 md:p-8 flex flex-col justify-between">
                   <div>
-                    <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 group-hover:text-rose-600 transition-colors">
+                    <h2 className="text-sm md:text-3xl font-bold text-gray-900 mb-2 md:mb-4 group-hover:text-darkBrown transition-colors">
                       {blog.title}
                     </h2>
-                    <p className="text-gray-600 text-lg leading-relaxed mb-6">
-                      {blog.excerpt}
-                    </p>
+                    
                     {blog.content && (
-                      <p className="text-gray-500 text-base leading-relaxed mb-6">
+                      <p className="text-gray-500 text-base text-sm md:text-lg leading-relaxed mb-2">
                         {blog.content.substring(0, 200)}...
                       </p>
                     )}

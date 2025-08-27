@@ -14,7 +14,7 @@ export const Navigation: React.FC = () => {
       textColor: "#FF9A00",
       links:
         categories?.slice(0, 3).map((category) => ({
-          href: `/category/${category._id}`,
+          href: `/categories`,
           label: category.Name, // API gives "Name"
           bgColor: "#fff",
           textColor: "#000",
@@ -29,7 +29,7 @@ export const Navigation: React.FC = () => {
       textColor: "#4F200D",
       links:
         blogs?.slice(0, 3).map((blog) => ({
-          href: `/blog/${blog._id}`,
+          href: `/blog`,
           label:
             blog.title.length > 20
               ? blog.title.slice(0, 20) + "..."
