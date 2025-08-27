@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { Filter, Grid, List } from "lucide-react";
 import { Helmet } from "react-helmet";
 // import { ProductCard } from "../components/ProductCard";
-import { useMainCategories, useSubCategories, useSubCategoriesByMain } from "../hook/apiHooks";
+import { useSubCategoriesByMain } from "../hook/apiHooks";
 import ProductDisplay from "../components/ProductDisplay";
 
 export const CategoryProducts: React.FC = () => {

@@ -1,7 +1,7 @@
 import React from "react";
 import { Calendar, Clock, User } from "lucide-react";
 import { useBlogs } from "../hook/apiHooks"; // adjust path if needed
-
+import { Helmet } from "react-helmet";
 export const BlogPage: React.FC = () => {
   const { data: blogs, loading, error } = useBlogs();
 
@@ -23,6 +23,46 @@ export const BlogPage: React.FC = () => {
 
   return (
     <div className="pt-24 pb-20">
+        <Helmet>
+        <title>Jewelry Insights & Stories – Ratnasmriti Gems, Chinsurah</title>
+        <meta
+          name="description"
+          content="Discover the latest jewelry trends, care tips, and fascinating stories from Ratnasmriti Gems & Jewellers, Kolkata's premier jewelry store."
+        />
+        <link rel="canonical" href={window.location.href} />
+
+        {/* Structured Data for SEO */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Blog",
+            name: "Jewelry Insights & Stories",
+            url: window.location.href,
+            description:
+              "Discover the latest jewelry trends, care tips, and fascinating stories from Ratnasmriti Gems & Jewellers, Kolkata's premier jewelry store.",
+            publisher: {
+              "@type": "Organization",
+              name: "Ratnasmriti Gems and Jewellers",
+              logo: {
+                "@type": "ImageObject",
+                url: new URL("../images/logo.jpeg", import.meta.url).href,
+              },
+            },
+            blogPost: blogs?.map((blog) => ({
+              "@type": "BlogPosting",
+              headline: blog.title,
+              image: new URL(`${import.meta.env.VITE_API_URL}/${blog.image}`, import.meta.url).href,
+              author: {
+                "@type": "Person",
+                name: blog.author,
+              },
+              datePublished: blog.date,
+              description: blog.content,
+            })),
+          })}
+        </script>
+      </Helmet>
+
       <div className="max-w-7xl mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-16">

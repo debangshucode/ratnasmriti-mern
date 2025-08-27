@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, MapPin, Phone, Mail } from "lucide-react";
+import { ArrowRight, MapPin} from "lucide-react";
 import { HeroSection } from "../components/HeroSection";
 import ScrollStack from "../components/ui/ScrollStack";
 import { ProductCard } from "../components/ProductCard";
