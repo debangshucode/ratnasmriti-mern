@@ -5,69 +5,77 @@ import { HeroSection } from "../components/HeroSection";
 import ScrollStack from "../components/ui/ScrollStack";
 import { ProductCard } from "../components/ProductCard";
 import { TestimonialCarousel } from "../components/TestimonialCarousel";
-import { mockProducts, mockCategories, mockBlogs } from "../data/mockData";
 import "../index.css";
 import { useMainCategories } from "../hook/apiHooks";
 import { BlogSection } from "../components/blogsection";
+import { Helmet } from "react-helmet";
+
 
 export const Home: React.FC = () => {
-  const recentProducts = mockProducts.slice(0, 4);
-  const mostSoldProducts = mockProducts.slice(4, 8);
-  const featuredBlogs = mockBlogs.slice(0, 3);
   const { data: categories, loading: catLoading } = useMainCategories();
 
   if ( catLoading) return <p>Loading...</p>;
 
   return (
     <div className="w-full overflow-x-hidden">
+      <Helmet>
+        <title>Best Jewellery & Gems Shop in Kolkata | Ratnasmriti Gems and Jewellers</title>
+        <meta
+          name="description"
+          content="Ratnasmriti Gems and jewellers - Bengal's best jewellery & gems shop. Discover our stunning collection of rings, necklaces, bangles & gemstones. Trusted craftsmanship in the heart of Kolkata."
+        />
+        <meta
+          name="keywords"
+          content="Best Jewellery Shop West Bengal, Gems Shop West Bengal, Gold Jewellery West Bengal, Diamond Jewellery Kolkata, Ratnasmriti Gems and jewellers"
+        />
+
+        {/* Open Graph for Social Media */}
+        <meta property="og:title" content="Best Jewellery & Gems Shop in West Bengal | Ratnasmriti Gems and Jewellers" />
+        <meta
+          property="og:description"
+          content="Shop the finest jewellery and gems in Kolkata,Chinsurah,Bardhaman,. Premium rings, necklaces, bangles, earrings, and gemstones at Royal Gems."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_IN" />
+        <meta property="og:url" content="https://yourwebsite.com" />
+        <meta property="og:site_name" content="Ratnasmriti Gems and Jewellers" />
+        {/* You can add your logo/image here */}
+        {/* <meta property="og:image" content="https://yourwebsite.com/og-image.jpg" /> */}
+
+        {/* Local Business Structured Data for SEO */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "JewelryandGemsStore",
+            name: "Ratnasmriti Gems and Jewellers",
+            image: "images/logo.jpeg",
+            "@id": "https://ratnasmritigemsandjewellers.in",
+            url: "https://ratnasmritigemsandjewellers.in",
+            telephone: "+91-9123375635",
+            address: {
+              "@type": "PostalAddress",
+              streetAddress: "Sarat Sarani Rd, near Canara Bank, More, Chinsurah",
+              addressLocality: "Chinsurah",
+              addressRegion: "WB",
+              postalCode: "712103",
+              addressCountry: "IN",
+            },
+            openingHours: [
+              "Mo-Fr 09:00-20:00",
+              "Sa 10:00-18:00",
+              "Su 12:00-17:00",
+            ],
+            sameAs: [
+              "https://www.facebook.com/rsjchannel/",
+             " https://www.youtube.com/watch?v=Jgcmim_NTIM"
+            ],
+          })}
+        </script>
+      </Helmet>
       {/* Hero Section */}
       <div className="max-w-9xl mx-auto px-4 bg-[#FAF7F0]">
         <HeroSection />
       </div>
-
-      {/* About Section */}
-      {/* <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                Ratnasmriti Gems and Jewellers
-              </h2>
-              <p className="text-lg text-gray-600 mb-6">
-                Ratnasmriti Gems and Jewellers is India’s most trusted gemstone
-                and crystal showroom, proudly serving Shreerampore and Sarat
-                Sarani. With a legacy of excellence, we specialize in authentic,
-                high-quality gemstones, crystals, and bespoke jewellery that
-                seamlessly blend traditional charm with modern elegance.
-              </p>
-              <p className="text-lg text-gray-600 mb-8">
-                Our store is led by Sanjay Sarkar, a passionate jewellery
-                designer with over 20 years of experience in crafting exquisite
-                pieces that captivate every heart. At Ratnasmriti Gems, we are
-                committed to delivering not just jewellery, but trust,
-                authenticity, and unmatched customer satisfaction.
-              </p>
-              <Link
-                to="/about"
-                className="inline-flex items-center space-x-2 bg-gradient-to-r from-rose-600 to-purple-600 text-white px-10 text-center py-3 rounded-full hover:shadow-lg transition-all"
-              >
-                <span>Discover Our Story</span>
-                <ArrowRight className="h-5 w-5" />
-              </Link>
-            </div>
-            <div className="relative">
-              <img
-                src="images/store1.jpeg"
-                alt="Jewelry craftsmanship"
-                className="rounded-2xl shadow-2xl"
-              />
-              <div className="absolute -bottom-6 -left-6 w-24 h-24 bg-gradient-to-br from-rose-400 to-purple-500 rounded-full opacity-20"></div>
-              <div className="absolute -top-6 -right-6 w-32 h-32 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full opacity-20"></div>
-            </div>
-          </div>
-        </div>
-      </section> */}
-
       {/* Recent Products */}
       <section className="py-20 ">
         <div className="max-w-7xl mx-auto px-4">

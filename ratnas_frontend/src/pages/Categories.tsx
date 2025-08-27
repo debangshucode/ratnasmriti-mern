@@ -1,13 +1,30 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
-import { mockCategories } from '../data/mockData';
 import { useMainCategories } from '../hook/apiHooks';
-
+import { Helmet } from "react-helmet";
 export const Categories: React.FC = () => {
   const {data : categories} = useMainCategories();
   return (
     <div className="pt-24 pb-20">
+       <Helmet>
+        <title>Shop Jewelry by Category | Best in Kolkata,Hooghly</title>
+        <meta 
+          name="description" 
+          content="Discover the finest jewelry categories in Kolkata. Shop Gems, Rings, necklaces, earrings, and more – curated with craftsmanship and elegance." 
+        />
+        <meta name="keywords" content="Jewelry Kolkata, Best jewelry shop Kolkata, Rings, Necklaces, Earrings, Bracelets, Categories" />
+
+        {/* Open Graph for social sharing */}
+        <meta property="og:title" content="Shop Jewelry by Category | Best in Kolkata" />
+        <meta 
+          property="og:description" 
+          content="Explore the best jewelry categories in Kolkata. Handpicked rings, necklaces, bracelets, and more." 
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_IN" />
+      </Helmet>
+
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-16">
           <h1 className="text-5xl font-bold text-gray-900 mb-4">
