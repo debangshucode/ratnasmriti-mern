@@ -164,17 +164,10 @@ export const Home: React.FC = () => {
         </div>
       </section>
 
-      <ScrollStack className="bg-bgLight hide-scrollbar">
+      
         <BlogSection />
-      </ScrollStack>
-      <div className="w-full bg-bgLight  flex justify-center self-end pt-5 pb-10">
-        <Link
-          to="/blog"
-          className="bg-[#e57373] hover:bg-[#d45a5a] text-white font-semibold px-8 py-3 rounded-lg shadow-lg transition-colors duration-300"
-        >
-          View All Blogs
-        </Link>
-      </div>
+ 
+      
 
       {/* Testimonials */}
       <TestimonialCarousel />
@@ -213,7 +206,7 @@ export const Home: React.FC = () => {
             <div className="space-y-4">
               <div className="aspect-video rounded-2xl overflow-hidden">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3023.123456789!2d-73.935242!3d40.730610!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259af4b9f1234%3A0xabcdef1234567890!2sBrooklyn%2C%20NY%2C%20USA!5e0!3m2!1sen!2sus!4v1234567890!5m2!1sen!2sus"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3679.3131152540022!2d88.33762017508337!3d22.753758379363088!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f89b002eb0abd5%3A0x76385183bee865de!2sRatnasmriti%20Gems%20%26%20Jewellers!5e0!3m2!1sen!2sin!4v1756325569152!5m2!1sen!2sin"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
@@ -228,7 +221,7 @@ export const Home: React.FC = () => {
                 <div>
                   <h3 className="font-semibold text-lg mb-1">Address</h3>
                   <p className="text-bgLight">
-                    456 Gem Avenue, Uptown District, Brooklyn, NY 11201
+                   Manasibazar Building, 180, N.S.Avenue, Serampore, Shreerampore, West Bengal 712201
                   </p>
                 </div>
               </div>
