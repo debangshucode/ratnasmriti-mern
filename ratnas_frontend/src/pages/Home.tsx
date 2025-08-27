@@ -2,17 +2,21 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, MapPin, Phone, Mail } from "lucide-react";
 import { HeroSection } from "../components/HeroSection";
-import BlogSection from "../components/blogsection";
 import ScrollStack from "../components/ui/ScrollStack";
 import { ProductCard } from "../components/ProductCard";
 import { TestimonialCarousel } from "../components/TestimonialCarousel";
 import { mockProducts, mockCategories, mockBlogs } from "../data/mockData";
 import "../index.css";
+import { useMainCategories } from "../hook/apiHooks";
+import { BlogSection } from "../components/blogsection";
 
 export const Home: React.FC = () => {
   const recentProducts = mockProducts.slice(0, 4);
   const mostSoldProducts = mockProducts.slice(4, 8);
   const featuredBlogs = mockBlogs.slice(0, 3);
+  const { data: categories, loading: catLoading } = useMainCategories();
+
+  if ( catLoading) return <p>Loading...</p>;
 
   return (
     <div className="w-full overflow-x-hidden">
@@ -75,10 +79,10 @@ export const Home: React.FC = () => {
               Discover our latest collection of stunning jewelry pieces
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
-            {recentProducts.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
+          <div className="">
+            {/* {recentProducts.map((product) => ( */}
+              <ProductCard  />
+            {/* ))} */}
           </div>
         </div>
       </section>
@@ -95,25 +99,26 @@ export const Home: React.FC = () => {
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {mockCategories.slice(0, 4).map((category) => (
+            {categories?.slice(0, 4).map((category) => (
               <Link
-                key={category.id}
-                to={`/category/${category.id}`}
+                key={category._id}
+                to={`/category/${category._id}`}
                 className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 <div className="aspect-square">
                   <img
-                    src={category.image}
-                    alt={category.name}
+                    src={`${import.meta.env.VITE_API_URL}/${category?.Image}`}
+                    alt={category.Name}
                     className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
                   <div className="absolute bottom-6 left-6">
                     <h3 className="text-white font-bold text-xl mb-2">
-                      {category.name}
+                      {category.Name}
                     </h3>
                     <p className="text-gray-200 text-sm">
-                      {category.productCount} items
+                      {/* {category.productCount} items */}
+                      items
                     </p>
                   </div>
                 </div>
@@ -143,16 +148,16 @@ export const Home: React.FC = () => {
               Our most loved pieces chosen by customers worldwide
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
-            {mostSoldProducts.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
+          <div className="">
+            {/* {mostSoldProducts.map((product) => ( */}
+              <ProductCard  />
+            {/* ))} */}
           </div>
         </div>
       </section>
 
       <ScrollStack className="bg-[#FAF7F0] hide-scrollbar">
-        <BlogSection featuredBlogs={featuredBlogs} />
+        <BlogSection />
       </ScrollStack>
       <div className="w-full bg-[#FAF7F0]  flex justify-center self-end pt-5 pb-10">
         <Link

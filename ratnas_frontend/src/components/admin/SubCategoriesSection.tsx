@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Plus, Edit3, Trash2 } from 'lucide-react';
 import axios from 'axios';
 
-interface Category {
+interface SubCategory {
   _id: string;
   Name: string;
   Description?: string;
@@ -10,19 +10,19 @@ interface Category {
   productCount?: number;
 }
 
-interface CategoriesSectionProps {
+interface SubCategoriesSectionProps {
   setShowAddForm: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const CategoriesSection: React.FC<CategoriesSectionProps> = ({ setShowAddForm }) => {
-  const [categories, setCategories] = useState<Category[]>([]);
+export const SubCategoriesSection: React.FC<SubCategoriesSectionProps> = ({ setShowAddForm }) => {
+  const [categories, setCategories] = useState<SubCategory[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchCategories = async () => {
       try {
         const baseUrl = import.meta.env.VITE_API_URL; // http://localhost:4000/api
-        const res = await axios.get(`${baseUrl}/api/admin/categories/main`, {
+        const res = await axios.get(`${baseUrl}/api/admin/categories/sub`, {
           withCredentials: true
         });
 
@@ -44,7 +44,7 @@ export const CategoriesSection: React.FC<CategoriesSectionProps> = ({ setShowAdd
   return (
     <div>
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl font-bold text-gray-900">Categories Management</h2>
+        <h2 className="text-2xl font-bold text-gray-900">Sub Categories Management</h2>
         <button
           onClick={() => setShowAddForm(true)}
           className="bg-gradient-to-r from-rose-600 to-purple-600 text-white px-4 py-2 rounded-lg flex items-center space-x-2 hover:shadow-lg transition-all"

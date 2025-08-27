@@ -35,8 +35,7 @@ const handleSubmit = async (e: React.FormEvent) => {
 
   try {
     const baseUrl = import.meta.env.VITE_API_URL;
-    const response = await axios.post(
-  `${baseUrl}/auth/login`,
+    const response = await axios.post(`${baseUrl}/api/auth/login`,
   { email, password },
   { withCredentials: true } // very important
 );
