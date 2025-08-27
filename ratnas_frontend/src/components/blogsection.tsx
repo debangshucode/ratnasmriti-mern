@@ -18,8 +18,8 @@ export const BlogSection: React.FC = () => {
     <section className="py-20  hide-scrollbar">
       <div className="max-w-7xl mx-auto ">
         <div className="text-center mb-16">
-          <h2 className="text-6xl font-bold text-gray-900">Latest from Our Blog</h2>
-          <p className="mt-3 text-lg text-gray-600">
+          <h2 className="text-6xl font-bold text-darkBrown">Latest from Our Blog</h2>
+          <p className="mt-3 text-lg text-orangeAccent">
             Stay updated with jewelry trends, care tips, and stories
           </p>
         </div>
@@ -41,16 +41,16 @@ export const BlogSection: React.FC = () => {
                 {/* <div className="text-md font-medium text-[#e57373] mb-2">
                   {blog.category}
                 </div> */}
-                <h3 className="text-2xl font-bold text-gray-900 mb-3">
+                <h3 className="text-2xl font-bold text-bgLight mb-3">
                   {blog.title}
                 </h3>
-                <p className="text-gray-600 mb-6">{blog.excerpt}</p>
+                <p className="text-bgLight mb-6">{blog.content}</p>
 
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-gray-500">{blog.date}</span>
+                  <span className="text-bgLight">{blog.date}</span>
                   <Link
                     to="/blog"
-                    className="text-[#e57373] font-medium hover:underline"
+                    className="text-yellowAccent font-medium hover:underline"
                   >
                     Read More →
                   </Link>

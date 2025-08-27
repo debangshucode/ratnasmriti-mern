@@ -12,7 +12,7 @@ export const ScrollStackItem: React.FC<ScrollStackItemProps> = ({
   itemClassName = "",
   index = 0,
 }) => {
-  const colors = ["bg-[#ffd8cc]", "bg-[#e6d9ff]", "bg-[#d8fff2]"];
+  const colors = ["bg-dark-orange-gradient","bg-darkBrown", "bg-orangeAccent" ];
   const color = colors[index % colors.length];
 
   return (

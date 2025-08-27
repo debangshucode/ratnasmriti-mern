@@ -32,7 +32,7 @@ const ProductCardItem: React.FC<ProductCardProps> = ({ product }) => {
 
   return (
     <>
-      <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group">
+      <div className="bg-dark-orange-gradient-r rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group">
         {/* Image */}
         <div className="relative aspect-square overflow-hidden">
           <img
@@ -49,37 +49,28 @@ const ProductCardItem: React.FC<ProductCardProps> = ({ product }) => {
           )}
           
           {/* Like button */}
-          <button
-            onClick={() => setIsLiked(!isLiked)}
-            className={`absolute top-3 right-3 p-2 rounded-full transition-all ${
-              isLiked
-                ? "bg-red-500 text-white shadow-lg"
-                : "bg-white/90 text-gray-600 hover:bg-red-500 hover:text-white shadow-md"
-            }`}
-          >
-            <Heart className={`h-4 w-4 ${isLiked ? "fill-current" : ""}`} />
-          </button>
+         
         </div>
 
         {/* Content */}
         <div className="p-4 space-y-3">
-          <div className="text-xs text-gray-500 uppercase tracking-wide">
+          <div className="text-xs text-orangeAccent uppercase tracking-wide">
             {product.section}
           </div>
           
-          <h3 className="font-semibold text-gray-900 line-clamp-2 text-sm leading-tight">
+          <h3 className="font-semibold text-bgLight line-clamp-2 text-md leading-tight">
             {product.Name}
           </h3>
           
           {/* Price */}
           <div className="flex items-center gap-2">
-            <span className="text-lg font-bold text-gray-900">
+            <span className="text-lg font-bold text-bgLight">
               {product.discounted_price !== undefined
                 ? `$${product.discounted_price.toFixed(2)}`
                 : "N/A"}
             </span>
             {product.price && (
-              <span className="text-sm text-gray-400 line-through">
+              <span className="text-sm text-bgLight line-through">
                 ${product.price.toFixed(2)}
               </span>
             )}
@@ -89,7 +80,7 @@ const ProductCardItem: React.FC<ProductCardProps> = ({ product }) => {
           <div className="flex gap-2 pt-2">
             <a
               href={`tel:`}
-              className="flex-1 text-center py-2 text-sm font-medium text-blue-600 border border-blue-600 rounded-lg hover:bg-blue-600 hover:text-white transition-colors"
+              className="flex-1 text-center py-2 text-sm font-medium text-bgLight  bg-orangeAccent  rounded-lg hover:bg-orangeAccent/50 hover:text-white transition-colors"
             >
               Call
             </a>

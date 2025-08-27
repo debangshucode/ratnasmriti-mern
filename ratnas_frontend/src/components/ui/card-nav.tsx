@@ -161,14 +161,14 @@ const CardNav: React.FC<CardNavProps> = ({
 
   return (
     <div
-      className={`card-nav-container absolute left-1/2 -translate-x-1/2 w-[90%] max-w-[800px] z-[99] top-[1em] md:top-[2em] ${className}`}
+      className={`card-nav-container bg-orange-gradient rounded-xl absolute left-1/2 -translate-x-1/2 w-[90%] max-w-[800px] z-[99] top-[1em] md:top-[2em] ${className}`}
     >
       <nav
         ref={navRef}
         className={`card-nav ${
           isExpanded ? "open" : ""
         } block h-[60px] p-0 rounded-xl shadow-md relative overflow-hidden will-change-[height]`}
-        style={{ backgroundColor: baseColor }}
+      
       >
         <div className="card-nav-top absolute inset-x-0 top-0 h-[60px] flex items-center justify-between p-2 pl-[1.1rem] z-[2]">
           <div
@@ -194,15 +194,15 @@ const CardNav: React.FC<CardNavProps> = ({
           </div>
 
           <div className="logo-container flex items-center md:absolute md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 order-1 md:order-none">
-            <Link to="/" className="font-semibold text-xl">
+            <Link to="/" className="font-semibold text-sm text-center lg:text-xl">
               Ratnasmriti Gems And Jewellers
             </Link>
           </div>
 
           <button
             type="button"
-            className="card-nav-cta-button  text-center items-center flex border-0 rounded-[calc(0.75rem-0.2rem)] px-4 h-full font-medium cursor-pointer transition-colors duration-300"
-            style={{ backgroundColor: "#2563eb", color: "#fff" }}
+            className="card-nav-cta-button  text-center items-center flex border-0 rounded-[calc(0.75rem-0.2rem)]  px-2  py-2 lg:px-4 lg:py-2 lg:h-full text-lg font-medium cursor-pointer transition-colors duration-300 bg-darkBrown text-bgLight hover:bg-orangeAccent hover:text-white hover:scale-105 ease-in-out order-3 "
+           
             onClick={() => setIsOpen(true)}
           >
             Login

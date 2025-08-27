@@ -16,12 +16,12 @@ export const Home: React.FC = () => {
   const featuredBlogs = mockBlogs.slice(0, 3);
   const { data: categories, loading: catLoading } = useMainCategories();
 
-  if ( catLoading) return <p>Loading...</p>;
+  if (catLoading) return <p>Loading...</p>;
 
   return (
     <div className="w-full overflow-x-hidden">
       {/* Hero Section */}
-      <div className="max-w-9xl mx-auto px-4 bg-[#FAF7F0]">
+      <div className="max-w-9xl mx-auto px-4 bg-dark-orange-gradient">
         <HeroSection />
       </div>
 
@@ -69,32 +69,32 @@ export const Home: React.FC = () => {
       </section> */}
 
       {/* Recent Products */}
-      <section className="py-20 ">
+      <section className="py-20 bg-yellow-orange-gradient ">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h1 className="text-6xl font-bold text-gray-900 mb-4">
+            <h1 className="text-6xl font-bold text-bgLight mb-4">
               Recent Arrivals
             </h1>
-            <p className="text-lg text-gray-600">
+            <p className="text-lg text-darkBrown">
               Discover our latest collection of stunning jewelry pieces
             </p>
           </div>
           <div className="">
             {/* {recentProducts.map((product) => ( */}
-              <ProductCard  />
+            <ProductCard />
             {/* ))} */}
           </div>
         </div>
       </section>
 
       {/* Shop by Category */}
-      <section className="py-20 bg-[#FAF7F0]">
+      <section className="py-20 bg-yellow-light-gradient">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h1 className="text-6xl font-bold text-gray-900 mb-4">
+            <h1 className="text-6xl font-bold text-orangeAccent mb-4">
               Shop by Category
-            </h1 >
-            <p className="text-lg text-gray-600">
+            </h1>
+            <p className="text-lg text-darkBrown">
               Explore our diverse range of jewelry collections
             </p>
           </div>
@@ -138,28 +138,28 @@ export const Home: React.FC = () => {
       </section>
 
       {/* Most Sold Products */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-bgLight ">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-6xl font-bold text-gray-900 mb-4">
+            <h2 className="text-6xl font-bold text-darkBrown mb-4">
               Bestsellers
             </h2>
-            <p className="text-lg text-gray-600">
+            <p className="text-lg text-orangeAccent">
               Our most loved pieces chosen by customers worldwide
             </p>
           </div>
           <div className="">
             {/* {mostSoldProducts.map((product) => ( */}
-              <ProductCard  />
+            <ProductCard />
             {/* ))} */}
           </div>
         </div>
       </section>
 
-      <ScrollStack className="bg-[#FAF7F0] hide-scrollbar">
+      <ScrollStack className="bg-bgLight hide-scrollbar">
         <BlogSection />
       </ScrollStack>
-      <div className="w-full bg-[#FAF7F0]  flex justify-center self-end pt-5 pb-10">
+      <div className="w-full bg-bgLight  flex justify-center self-end pt-5 pb-10">
         <Link
           to="/blog"
           className="bg-[#e57373] hover:bg-[#d45a5a] text-white font-semibold px-8 py-3 rounded-lg shadow-lg transition-colors duration-300"
@@ -172,66 +172,57 @@ export const Home: React.FC = () => {
       <TestimonialCarousel />
 
       {/* Contact & Location */}
-      <section className="py-20 bg-gray-900 text-white">
+      <section className="py-20 bg-yellow-orange-gradient-r text-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            <div>
-              <h2 className="text-4xl font-bold mb-8">Visit Our Store</h2>
-              <div className="space-y-6">
-                <div className="flex items-start space-x-4">
-                  <MapPin className="h-6 w-6 text-rose-400 mt-1" />
-                  <div>
-                    <h3 className="font-semibold text-lg mb-1">Address</h3>
-                    <p className="text-gray-300">
-                      123 Jewelry Street, Downtown District, New York, NY 10001
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-start space-x-4">
-                  <Phone className="h-6 w-6 text-rose-400 mt-1" />
-                  <div>
-                    <h3 className="font-semibold text-lg mb-1">Phone</h3>
-                    <p className="text-gray-300">+1 (555) 123-4567</p>
-                  </div>
-                </div>
-                <div className="flex items-start space-x-4">
-                  <Mail className="h-6 w-6 text-rose-400 mt-1" />
-                  <div>
-                    <h3 className="font-semibold text-lg mb-1">Email</h3>
-                    <p className="text-gray-300">info@royalgems.com</p>
-                  </div>
-                </div>
-              </div>
-              <div className="mt-8">
-                <h3 className="font-semibold text-lg mb-4">Store Hours</h3>
-                <div className="space-y-2 text-gray-300">
-                  <div className="flex justify-between">
-                    <span>Monday - Friday</span>
-                    <span>9:00 AM - 8:00 PM</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Saturday</span>
-                    <span>10:00 AM - 6:00 PM</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Sunday</span>
-                    <span>12:00 PM - 5:00 PM</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="relative">
-              <div className="aspect-video bg-gray-800 rounded-2xl overflow-hidden">
+            {/* Map 1 */}
+            <div className="space-y-4">
+              <div className="aspect-video rounded-2xl overflow-hidden">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.15830869428!2d-74.119763973046!3d40.69766374874431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sus!4v1647887340086!5m2!1sen!2sus"
+                  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7350.173712497664!2d88.385058!3d22.910167!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f8936c18c18c57%3A0x94fadfa5b69102b0!2sRATNASMRITI%20GEMS%20%26%20JEWELLERS!5e0!3m2!1sen!2sin!4v1756320887646!5m2!1sen!2sin"
+                 
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="Store Location"
+                  title="Store Location 1"
                 ></iframe>
+              </div>
+              <div className="flex items-start space-x-4">
+                <MapPin className="h-6 w-6 text-yellowAccent mt-1" />
+                <div>
+                  <h3 className="font-semibold text-lg mb-1">Address</h3>
+                  <p className="text-bgLight">
+                    Sarat Sarani Rd, near Canara Bank, More, Chinsurah, West Bengal 712103
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Map 2 */}
+            <div className="space-y-4">
+              <div className="aspect-video rounded-2xl overflow-hidden">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3023.123456789!2d-73.935242!3d40.730610!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259af4b9f1234%3A0xabcdef1234567890!2sBrooklyn%2C%20NY%2C%20USA!5e0!3m2!1sen!2sus!4v1234567890!5m2!1sen!2sus"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Store Location 2"
+                ></iframe>
+              </div>
+              <div className="flex items-start space-x-4">
+                <MapPin className="h-6 w-6 text-yellowAccent mt-1" />
+                <div>
+                  <h3 className="font-semibold text-lg mb-1">Address</h3>
+                  <p className="text-bgLight">
+                    456 Gem Avenue, Uptown District, Brooklyn, NY 11201
+                  </p>
+                </div>
               </div>
             </div>
           </div>

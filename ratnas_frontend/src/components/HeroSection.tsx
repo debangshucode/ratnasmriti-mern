@@ -1,112 +1,54 @@
 "use client";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
-interface StackCard {
-  id: number;
-  img: string;
-}
-
 interface HeroSectionProps {
-  cardsData?: StackCard[];
-  rotateInterval?: number;
+  imageUrl?: string;
 }
 
 export const HeroSection: React.FC<HeroSectionProps> = ({
-  cardsData = [],
-  rotateInterval = 4000,
+  imageUrl = "images/hero.png",
 }) => {
-  const defaultCards = cardsData.length
-    ? cardsData
-    : [
-        {
-          id: 1,
-          img: "https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?q=80&w=600&auto=format",
-        },
-        {
-          id: 2,
-          img: "https://images.unsplash.com/photo-1449844908441-8829872d2607?q=80&w=600&auto=format",
-        },
-        {
-          id: 3,
-          img: "https://images.unsplash.com/photo-1452626212852-811d58933cae?q=80&w=600&auto=format",
-        },
-        {
-          id: 4,
-          img: "https://images.unsplash.com/photo-1572120360610-d971b9d7767c?q=80&w=600&auto=format",
-        },
-      ];
-
-  const [cards, setCards] = useState(defaultCards);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCards((prev) => {
-        const newCards = [...prev];
-        const [first] = newCards.splice(0, 1);
-        newCards.push(first);
-        return newCards;
-      });
-    }, rotateInterval);
-    return () => clearInterval(interval);
-  }, [rotateInterval]);
-
   return (
-    <section className="pt-20 relative w-full min-h-screen flex flex-col-reverse lg:flex-row items-center gap-10 lg:px-24 py-12  overflow-hidden">
-      {/* Left: Image Stack */}
-
-      <div className="relative w-full lg:w-1/2 flex justify-start items-center">
-        <div className="relative w-[75%] max-w-[400px] h-[300px] sm:h-[400px] lg:h-[500px] perspective-1000">
-          {cards.map((card, index) => {
-            const randomRotate = Math.random() * 10 - 5;
-            return (
-              <motion.div
-                key={card.id}
-                className="absolute rounded-3xl overflow-hidden border-4 border-white shadow-2xl"
-                animate={{
-                  rotateZ: (cards.length - index - 1) * 4 + randomRotate,
-                  scale: 1 + index * 0.06 - cards.length * 0.06,
-                }}
-                initial={false}
-                transition={{ type: "spring", stiffness: 260, damping: 20 }}
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  transformOrigin: "90% 90%",
-                }}
-              >
-                <img
-                  src={card.img}
-                  alt={`card-${card.id}`}
-                  className="w-full h-full object-cover pointer-events-none brightness-75"
-                />
-              </motion.div>
-            );
-          })}
-        </div>
+    <section className="pt-32 relative w-full min-h-screen flex flex-col lg:flex-row items-center gap-10 lg:px-24 py-12 overflow-hidden">
+      {/* Top on Mobile: Rotating Image */}
+      <div className="relative w-full lg:w-1/2 flex justify-center items-center mb-8 lg:mb-0">
+        <motion.div
+          className="w-[250px] h-[250px] sm:w-[350px] sm:h-[350px] lg:w-[450px] lg:h-[450px] rounded-full overflow-hidden shadow-2xl border-4 border-white"
+          animate={{ rotate: 360 }}
+          transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
+        >
+          <img
+            src={imageUrl}
+            alt="hero-img"
+            className="w-full h-full object-cover"
+          />
+        </motion.div>
       </div>
-      {/* Right: Content */}
-      <div className="w-full text-center  lg:text-left text-black max-w-5xl flex flex-col justify-center mb-12 lg:mb-0">
+
+      {/* Bottom on Mobile: Content */}
+      <div className="w-full text-center lg:text-left text-bgLight max-w-5xl flex flex-col justify-center">
         <h1 className="text-xl sm:text-5xl font-bold mb-6">
           Ratnasmriti Gems and Jewellers
         </h1>
-        <p className="text-xl sm:text-2xl mb-8 text-gray-700">
+        <p className="text-md sm:text-2xl mb-8 text-tealSecondary">
           Ratnasmriti Gems and Jewellers is India’s most trusted gemstone and
           crystal showroom, proudly serving Shreerampore and Sarat Sarani. With
           a legacy of excellence, we specialize in authentic, high-quality
           gemstones, crystals, and bespoke jewellery that seamlessly blend
-          traditional charm with modern elegance. <br></br>Our store is led by
-          Sanjay Sarkar, a passionate jewellery designer with over 20 years of
-          experience in crafting exquisite pieces that captivate every heart. At
-          Ratnasmriti Gems, we are committed to delivering not just jewellery,
-          but trust, authenticity, and unmatched customer satisfaction.
+          traditional charm with modern elegance. <br /> 
+          <br />
+          Our store is led by Sanjay Sarkar, a passionate jewellery designer
+          with over 20 years of experience in crafting exquisite pieces that
+          captivate every heart. At Ratnasmriti Gems, we are committed to
+          delivering not just jewellery, but trust, authenticity, and unmatched
+          customer satisfaction.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
           <Link
             to="/categories"
-            className="relative px-8 py-4 bg-gradient-to-r from-rose-600 to-purple-600 text-white font-semibold rounded-full hover:scale-105 transition-transform"
+            className="relative px-4 py-2 md:px-8 md:py-4 border border-1 bg-dark-orange-270-gradient text-white font-semibold rounded-full hover:scale-105 transition-transform"
           >
             <span className="flex items-center space-x-2">
               <span>Explore Collection</span>
@@ -115,9 +57,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           </Link>
           <Link
             to="/about"
-            className="inline-block rounded-full bg-gradient-to-r from-rose-600 to-pink-500 p-[2px] transition-all hover:shadow-lg"
+            className="flex rounded-full bg-dark-orange-270-gradient to-pink-500 p-[2px] transition-all hover:shadow-lg"
           >
-            <span className="inline-flex items-center space-x-2 bg-white rounded-full px-10 py-3 font-semibold text-gray-900 hover:bg-gradient-to-r hover:from-rose-600 hover:to-pink-500 hover:text-white transition-all">
+            <span className="inline-flex w-full items-center space-x-2 bg-white rounded-full px-4 py-2 md:px-10 md:py-3 font-semibold text-gray-900 hover:bg-gradient-to-r hover:bg-dark-orange-270-gradient hover:text-white hover:border transition-all">
               <span>Watch Story</span>
               <ArrowRight className="h-5 w-5" />
             </span>
