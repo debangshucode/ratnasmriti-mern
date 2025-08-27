@@ -17,43 +17,43 @@ export const TestimonialCarousel: React.FC = () => {
   const testimonials: Testimonial[] = [
     {
       id: '1',
-      name: 'Sarah Johnson',
-      image: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=150&h=150',
+      name: 'Pankaj Ranjan Das',
+      image: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=150&h=150',
       rating: 5,
-      text: 'Absolutely stunning jewelry! The craftsmanship is exceptional and the customer service is outstanding.',
-      location: 'New York, NY'
+      text: 'Stunning Gems pieces with exceptional craftsmanship! The staff at Ratnasmriti Gems & Jewellers are knowledgeable and friendly. Highly recommended for anyone looking for beautiful, authentic gems and bracelets. They got different price range of gem stones in their collection. ',
+      location: 'Kolkata, WB'
     },
     {
       id: '2',
-      name: 'Michael Chen',
+      name: 'Raju Mondal',
       image: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=150&h=150',
       rating: 5,
-      text: 'Perfect engagement ring! My fiancée loves it and the quality exceeded our expectations.',
-      location: 'Los Angeles, CA'
+      text: 'Dada ka6 thake pyrite bracelet Nia giya6ilm khub e valo result peye6i ..6month hoye ga6e but Jai rokom nia6ilm sei rokom quality roya6e ...khub e valo Kaj hoye6e amr',
+      location: 'Bandel, WB'
     },
     {
       id: '3',
-      name: 'Emily Davis',
+      name: 'Doyel Dutta',
       image: 'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=150&h=150',
       rating: 5,
-      text: 'Amazing collection of vintage pieces. Each item tells a story and the attention to detail is remarkable.',
-      location: 'Chicago, IL'
+      text: 'Too good behaviour and too much supportive. I am m very much satisfied 😊😊 every one are welcome to Ratna Smriti at Bandel or Shreerampur shops',
+      location: 'Chandannagar, WB'
     },
     {
       id: '4',
-      name: 'David Wilson',
-      image: 'https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=150&h=150',
+      name: 'Lisa Kar',
+      image: 'https://images.pexels.com/photos/712513/pexels-photo-712513.jpeg?auto=compress&cs=tinysrgb&w=150&h=150',
       rating: 5,
-      text: 'The custom design service is fantastic. They brought my vision to life perfectly.',
-      location: 'Houston, TX'
+      text: 'Ami r amr husband dujonei aj elm khub valo kore sob ta bujhte parlm sbi khub vlo kore bujhiyeche jaja jante cheyechilm thank you etota somoy debar jnno.. Khub valo laglo apnader sobai k 👍👍👍',
+      location: 'West Bengal'
     },
     {
       id: '5',
-      name: 'Lisa Martinez',
+      name: 'Shreya Mondal',
       image: 'https://images.pexels.com/photos/712513/pexels-photo-712513.jpeg?auto=compress&cs=tinysrgb&w=150&h=150',
       rating: 5,
-      text: 'Beautiful earrings that I wear every day. The quality and shine have lasted for years.',
-      location: 'Miami, FL'
+      text: 'The stone provided was upto the mark and the quality was extremely good. Sanjoy’s behaviour was very friendly and he arranged me the ring in a very less time. Highly recommended.',
+      location: 'Bardhaman, WB'
     }
   ];
 
