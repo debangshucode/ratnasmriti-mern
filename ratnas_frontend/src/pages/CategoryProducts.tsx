@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { Filter, Grid, List } from "lucide-react";
+import { Helmet } from "react-helmet";
 // import { ProductCard } from "../components/ProductCard";
 import { useMainCategories, useSubCategories, useSubCategoriesByMain } from "../hook/apiHooks";
 import ProductDisplay from "../components/ProductDisplay";
@@ -47,6 +48,20 @@ export const CategoryProducts: React.FC = () => {
 
   return (
     <div className="pt-24 pb-20">
+       <Helmet>
+        <title>{category.Name} | Ratnasmriti Gems</title>
+        <meta
+          name="description"
+          content={`Explore our ${category.Name} collection. Find the best pieces crafted with elegance and style.`}
+        />
+        {/* Optional: Social share meta */}
+        <meta property="og:title" content={`${category.Name} | Ratnasmriti Gems`} />
+        <meta
+          property="og:description"
+          content={`Discover ${category.Name} items from our curated collection.`}
+        />
+        <meta property="og:type" content="website" />
+      </Helmet>
       <div className="max-w-7xl mx-auto px-4">
         {/* Header */}
         <div className="mb-12">
