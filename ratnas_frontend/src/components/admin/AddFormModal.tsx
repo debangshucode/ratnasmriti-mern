@@ -66,8 +66,12 @@ export const AddFormModal: React.FC<AddFormModalProps> = ({ activeSection, setSh
       });
       console.log(res.data); // API response
       setShowAddForm(false);
-    } catch (err: any) {
-      console.error(err.response || err);
+    } catch (err: unknown) {
+      if (axios.isAxiosError(err)) {
+        console.error(err.response || err);
+      } else {
+        console.error(err);
+      }
       alert('Error saving data');
     }
   };

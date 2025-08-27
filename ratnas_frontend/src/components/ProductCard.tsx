@@ -1,70 +1,35 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Heart } from "lucide-react";
-import axios from "axios";
-import { WhatsAppModal } from "./WhatsAppModal";
+import { WhatsAppModal } from "./WhatsAppModal"; // import modal
 
 interface Product {
-  _id: string;
-  Name: string;
+  id: string;
+  name: string;
   price: number;
   originalPrice?: number;
-  Image: string;
-  main_category: string;
+  image: string;
+  category: string;
   isNew?: boolean;
   isSale?: boolean;
   phone?: string;
 }
 
-// Component to fetch and render all products
-export const ProductCard: React.FC = () => {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const res = await axios.get("http://localhost:4000/api/pub-sub");
-        const apiProducts: Product[] = res.data.map((p: any) => ({
-          ...p,
-          Image: p.Image.startsWith("http")
-            ? p.Image
-            : `http://localhost:4000/${p.Image.replace(/\\/g, "/")}`,
-        }));
-        setProducts(apiProducts);
-      } catch (err) {
-        console.error(err);
-        alert("Error fetching products");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProducts();
-  }, []);
-
-  if (loading) return <p>Loading products...</p>;
-
-  return (
-    <div className="space-y-4">
-      {products.map((product) => (
-        <ProductCardItem key={product._id} product={product} />
-      ))}
-    </div>
-  );
-};
-
-// Component to render a single product
 interface ProductCardProps {
   product: Product;
   className?: string;
 }
 
-const ProductCardItem: React.FC<ProductCardProps> = ({ product, className = "" }) => {
+export const ProductCard: React.FC<ProductCardProps> = ({
+  product,
+  className = "",
+}) => {
   const [isLiked, setIsLiked] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const discount = product.originalPrice
-    ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)
+    ? Math.round(
+        ((product.originalPrice - product.price) / product.originalPrice) * 100
+      )
     : 0;
 
   return (
@@ -75,8 +40,8 @@ const ProductCardItem: React.FC<ProductCardProps> = ({ product, className = "" }
         {/* Image left */}
         <div className="relative w-1/3 min-w-[180px] h-auto">
           <img
-            src={product.Image}
-            alt={product.Name}
+            src={product.image}
+            alt={product.name}
             className="w-full h-full object-cover"
           />
           <div className="absolute top-3 left-3 flex flex-col space-y-2">
@@ -107,10 +72,10 @@ const ProductCardItem: React.FC<ProductCardProps> = ({ product, className = "" }
         <div className="flex flex-col justify-between p-6 w-2/3">
           <div>
             <div className="text-xs sm:text-sm text-gray-500">
-              {product.main_category}
+              {product.category}
             </div>
             <h3 className="text-sm sm:text-lg font-semibold text-gray-900 mb-2 line-clamp-2">
-              {product.Name}
+              {product.name}
             </h3>
             <div className="flex items-center space-x-2 mb-4">
               <span className="text-lg sm:text-xl font-bold text-gray-900">
@@ -143,11 +108,11 @@ const ProductCardItem: React.FC<ProductCardProps> = ({ product, className = "" }
       </div>
 
       {/* WhatsApp Modal */}
-      {/* <WhatsAppModal
+      <WhatsAppModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         product={product}
-      /> */}
+      />
     </>
   );
 };
