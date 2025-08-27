@@ -99,7 +99,7 @@ export const Home: React.FC = () => {
       <section className="py-20 bg-yellow-light-gradient">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h1 className="text-6xl font-bold text-orangeAccent mb-4">
+            <h1 className="text-6xl font-bold text-darkBrown mb-4">
               Shop by Category
             </h1>
             <p className="text-lg text-darkBrown">
@@ -136,7 +136,7 @@ export const Home: React.FC = () => {
           <div className="text-center mt-12">
             <Link
               to="/categories"
-              className="inline-flex items-center space-x-2 bg-gradient-to-r from-rose-600 to-purple-600 text-white px-8 py-3 rounded-full hover:shadow-lg transition-all"
+              className="inline-flex items-center space-x-2 bg-dark-orange-270-gradient text-white px-8 py-3 rounded-full hover:shadow-lg transition-all"
             >
               <span className="text-xl">View All Categories</span>
               <ArrowRight className="h-5 w-5" />

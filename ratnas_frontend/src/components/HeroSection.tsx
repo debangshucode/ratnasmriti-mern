@@ -59,7 +59,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             to="/about"
             className="flex rounded-full bg-dark-orange-270-gradient to-pink-500 p-[2px] transition-all hover:shadow-lg"
           >
-            <span className="inline-flex w-full items-center space-x-2 bg-white rounded-full px-4 py-2 md:px-10 md:py-3 font-semibold text-gray-900 hover:bg-gradient-to-r hover:bg-dark-orange-270-gradient hover:text-white hover:border transition-all">
+            <span className="inline-flex w-full items-center space-x-2 bg-white rounded-full px-4 py-2 md:px-10 md:py-3 font-semibold text-gray-900 hover:bg-dark-orange-270-gradient hover:text-white hover:border transition-all">
               <span>Watch Story</span>
               <ArrowRight className="h-5 w-5" />
             </span>
