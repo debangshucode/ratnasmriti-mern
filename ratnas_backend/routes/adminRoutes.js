@@ -1,9 +1,9 @@
-import express from 'express'
-import { adminLogin } from '../controllers/adminController.js'
-import authAdmin from '../middlewares/authAdmin.js'
+import express from "express";
+import { adminLogin } from "../controllers/adminController.js";
+import authAdmin from "../middlewares/authAdmin.js";
 
-const adminRouter = express.Router()
+const router = express.Router();
 
-adminRouter.post('/login',adminLogin)
+router.post("/login", adminLogin);
 
-export default adminRouter
+export default router;
