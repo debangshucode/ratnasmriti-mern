@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, MapPin} from "lucide-react";
+import { ArrowRight, MapPin, Stars, Sparkles, Moon, Sun } from "lucide-react";
 import { HeroSection } from "../components/HeroSection";
 import { ProductCard } from "../components/ProductCard";
 import { TestimonialCarousel } from "../components/TestimonialCarousel";
@@ -8,7 +8,6 @@ import "../index.css";
 import { useMainCategories } from "../hook/apiHooks";
 import { BlogSection } from "../components/blogsection";
 import { Helmet } from "react-helmet";
-
 
 export const Home: React.FC = () => {
   const { data: categories, loading: catLoading } = useMainCategories();
@@ -18,7 +17,9 @@ export const Home: React.FC = () => {
   return (
     <div className="w-full overflow-x-hidden">
       <Helmet>
-        <title>Best Jewellery & Gems Shop in Kolkata | Ratnasmriti Gems and Jewellers</title>
+        <title>
+          Best Jewellery & Gems Shop in Kolkata | Ratnasmriti Gems and Jewellers
+        </title>
         <meta
           name="description"
           content="Ratnasmriti Gems and jewellers - Bengal's best jewellery & gems shop. Discover our stunning collection of rings, necklaces, bangles & gemstones. Trusted craftsmanship in the heart of Kolkata."
@@ -29,7 +30,10 @@ export const Home: React.FC = () => {
         />
 
         {/* Open Graph for Social Media */}
-        <meta property="og:title" content="Best Jewellery & Gems Shop in West Bengal | Ratnasmriti Gems and Jewellers" />
+        <meta
+          property="og:title"
+          content="Best Jewellery & Gems Shop in West Bengal | Ratnasmriti Gems and Jewellers"
+        />
         <meta
           property="og:description"
           content="Shop the finest jewellery and gems in Kolkata,Chinsurah,Bardhaman,. Premium rings, necklaces, bangles, earrings, and gemstones at Royal Gems."
@@ -37,7 +41,10 @@ export const Home: React.FC = () => {
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_IN" />
         <meta property="og:url" content="https://yourwebsite.com" />
-        <meta property="og:site_name" content="Ratnasmriti Gems and Jewellers" />
+        <meta
+          property="og:site_name"
+          content="Ratnasmriti Gems and Jewellers"
+        />
         {/* You can add your logo/image here */}
         {/* <meta property="og:image" content="https://yourwebsite.com/og-image.jpg" /> */}
 
@@ -53,7 +60,8 @@ export const Home: React.FC = () => {
             telephone: "+91-9123375635",
             address: {
               "@type": "PostalAddress",
-              streetAddress: "Sarat Sarani Rd, near Canara Bank, More, Chinsurah",
+              streetAddress:
+                "Sarat Sarani Rd, near Canara Bank, More, Chinsurah",
               addressLocality: "Chinsurah",
               addressRegion: "WB",
               postalCode: "712103",
@@ -66,7 +74,7 @@ export const Home: React.FC = () => {
             ],
             sameAs: [
               "https://www.facebook.com/rsjchannel/",
-             " https://www.youtube.com/watch?v=Jgcmim_NTIM"
+              " https://www.youtube.com/watch?v=Jgcmim_NTIM",
             ],
           })}
         </script>
@@ -93,7 +101,76 @@ export const Home: React.FC = () => {
           </div>
         </div>
       </section>
+      {/* horoscope */}
+      <section className="relative bg-dark-orange-gradient text-white overflow-hidden">
+        {/* Animated background elements */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-10 left-10 animate-float">
+            <Stars className="w-8 h-8" />
+          </div>
+          <div
+            className="absolute top-20 right-16 animate-float"
+            style={{ animationDelay: "1s" }}
+          >
+            <Sparkles className="w-6 h-6" />
+          </div>
+          <div
+            className="absolute top-32 left-1/4 animate-float"
+            style={{ animationDelay: "2s" }}
+          >
+            <Moon className="w-10 h-10" />
+          </div>
+          <div
+            className="absolute top-16 right-1/3 animate-float"
+            style={{ animationDelay: "0.5s" }}
+          >
+            <Sun className="w-7 h-7" />
+          </div>
+          <div
+            className="absolute bottom-20 left-20 animate-float"
+            style={{ animationDelay: "1.5s" }}
+          >
+            <Sparkles className="w-5 h-5" />
+          </div>
+          <div
+            className="absolute bottom-32 right-20 animate-float"
+            style={{ animationDelay: "3s" }}
+          >
+            <Stars className="w-6 h-6" />
+          </div>
+        </div>
 
+        <div className="relative z-10 container mx-auto px-4 py-20 md:py-32 text-center">
+          <div className="inline-flex items-center justify-center w-24 h-24 bg-white/20 rounded-full mb-8 backdrop-blur-sm animate-pulse-soft">
+            <Stars className="w-12 h-12" fill="currentColor" />
+          </div>
+
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+            Cosmic
+            <span className="block bg-gradient-to-r from-yellowAccent to-white bg-clip-text text-transparent">
+              Insights
+            </span>
+          </h1>
+
+          <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed">
+            Unlock the mysteries of the universe and discover what the stars
+            have aligned for your journey today
+          </p>
+
+          <Link
+            to="/horoscope"
+            className="inline-flex items-center justify-center px-6 py-3 md:px-8 md:py-4 
+             rounded-full font-semibold text-white 
+             bg-dark-orange-270-gradient text-xl
+             transform hover:scale-105 transition-all duration-300 shadow-md"
+          >
+            <span className="flex items-center space-x-2">
+              <span>Horoscope</span>
+              <ArrowRight className="h-5 w-5" />
+            </span>
+          </Link>
+        </div>
+      </section>
       {/* Shop by Category */}
       <section className="py-8 lg:py20 bg-yellow-light-gradient">
         <div className="max-w-7xl mx-auto px-4">
@@ -163,10 +240,7 @@ export const Home: React.FC = () => {
         </div>
       </section>
 
-      
-        <BlogSection />
- 
-      
+      <BlogSection />
 
       {/* Testimonials */}
       <TestimonialCarousel />
@@ -180,7 +254,6 @@ export const Home: React.FC = () => {
               <div className="aspect-video rounded-2xl overflow-hidden">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7350.173712497664!2d88.385058!3d22.910167!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f8936c18c18c57%3A0x94fadfa5b69102b0!2sRATNASMRITI%20GEMS%20%26%20JEWELLERS!5e0!3m2!1sen!2sin!4v1756320887646!5m2!1sen!2sin"
-                 
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
@@ -195,7 +268,8 @@ export const Home: React.FC = () => {
                 <div>
                   <h3 className="font-semibold text-lg mb-1">Address</h3>
                   <p className="text-bgLight">
-                    Sarat Sarani Rd, near Canara Bank, More, Chinsurah, West Bengal 712103
+                    Sarat Sarani Rd, near Canara Bank, More, Chinsurah, West
+                    Bengal 712103
                   </p>
                 </div>
               </div>
@@ -220,7 +294,8 @@ export const Home: React.FC = () => {
                 <div>
                   <h3 className="font-semibold text-lg mb-1">Address</h3>
                   <p className="text-bgLight">
-                   Manasibazar Building, 180, N.S.Avenue, Serampore, Shreerampore, West Bengal 712201
+                    Manasibazar Building, 180, N.S.Avenue, Serampore,
+                    Shreerampore, West Bengal 712201
                   </p>
                 </div>
               </div>

@@ -64,7 +64,6 @@ export const SubCategoriesSection: React.FC<SubCategoriesSectionProps> = ({ setS
             />
             <h3 className="text-lg font-semibold text-gray-900 mb-2">{category.Name}</h3>
             <p className="text-gray-600 text-sm mb-3">{category.Description || 'No description'}</p>
-            <p className="text-sm text-gray-500 mb-4">{category.productCount || 0} products</p>
             <div className="flex space-x-2">
               <button className="text-yellow-600 hover:text-yellow-900">
                 <Edit3 className="h-4 w-4" />

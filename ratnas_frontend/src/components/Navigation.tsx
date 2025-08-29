@@ -1,10 +1,17 @@
+import { useLocation } from "react-router-dom";
 import React from "react";
 import CardNav from "./ui/card-nav";
 import { useMainCategories, useBlogs } from "../hook/apiHooks";
 
 export const Navigation: React.FC = () => {
+  const { pathname } = useLocation();
   const { data: categories } = useMainCategories();
   const { data: blogs } = useBlogs();
+
+  // hide on admin routes
+  if (pathname.startsWith("/admin")) {
+    return null;
+  }
 
   const items = [
     {
@@ -15,7 +22,7 @@ export const Navigation: React.FC = () => {
       links:
         categories?.slice(0, 3).map((category) => ({
           href: `/categories`,
-          label: category.Name, // API gives "Name"
+          label: category.Name,
           bgColor: "#fff",
           textColor: "#000",
           ariaLabel: `${category.Name} Category`,

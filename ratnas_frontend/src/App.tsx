@@ -9,6 +9,7 @@ import { ProductDetail } from './pages/ProductDetail';
 import { BlogPage } from './pages/BlogPage';
 import { AdminPage } from './pages/AdminPage';
 import About from './components/About';
+import HoroscopePage from './pages/horoscopePage';
 function App() {
   return (
     <Router>
@@ -23,6 +24,7 @@ function App() {
             <Route path="/product/:productId" element={<ProductDetail />} />
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/admin" element={<AdminPage />} />
+            <Route path="/horoscope" element={<HoroscopePage />} />
           </Routes>
         </main>
         <Footer />

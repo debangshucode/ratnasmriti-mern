@@ -4,7 +4,7 @@ const About: React.FC = () => {
   return (
     <div className="min-h-screen flex flex-col bg-white text-black">
       {/* Header with bottom curve */}
-      <div className="relative text-center py-20 bg-gradient-to-b from-white to-[#DF1E4C] text-white clip-bottom-corners">
+      <div className="relative text-center py-20 pt-32 bg-dark-orange-gradient text-white clip-bottom-corners">
         <h1 className="text-5xl font-bold">About Us</h1>
         <p className="mt-4 text-lg md:text-xl">
           Discover the mystical world of Tarot and Vedic Astrology
