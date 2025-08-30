@@ -11,6 +11,7 @@ interface Product {
   featured_image: string;
   inStock: boolean;
   content: string;
+  section: string;
 }
 
 interface ProductsSectionProps {
@@ -114,6 +115,9 @@ export const ProductsSection: React.FC<ProductsSectionProps> = ({
 
             <p className="mt-3 text-sm text-gray-700 line-clamp-2">
               {product.content}
+            </p>
+            <p className="mt-3 text-sm text-gray-700 line-clamp-2">
+              {product.section}
             </p>
 
             <div className="mt-3 flex items-center justify-between">

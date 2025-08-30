@@ -101,6 +101,24 @@ export const Home: React.FC = () => {
           </div>
         </div>
       </section>
+       {/* popular  Products */}
+      <section className="py-8 lg:py20  ">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <h1 className="text-3xl lg:text-6xl font-bold text-bgLight mb-4">
+              Popular  Products
+            </h1>
+            <p className="text-lg text-darkBrown">
+              Discover our Popular collection of stunning jewelry pieces
+            </p>
+          </div>
+          <div className="">
+            {/* {recentProducts.map((product) => ( */}
+            <ProductCard category="Popular" />
+            {/* ))} */}
+          </div>
+        </div>
+      </section>
       {/* horoscope */}
       <section className="relative text-white overflow-hidden">
         {/* Animated background elements */}
@@ -168,6 +186,24 @@ export const Home: React.FC = () => {
               <ArrowRight className="h-5 w-5" />
             </span>
           </Link>
+        </div>
+      </section>
+      {/* recommended  Products */}
+      <section className="py-8 lg:py20  ">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <h1 className="text-3xl lg:text-6xl font-bold text-orangeAccent mb-4">
+              Recommended  Products
+            </h1>
+            <p className="text-lg text-darkBrown">
+              Discover our Recommended collection of stunning jewelry pieces
+            </p>
+          </div>
+          <div className="">
+            {/* {recentProducts.map((product) => ( */}
+            <ProductCard category="Recommended" />
+            {/* ))} */}
+          </div>
         </div>
       </section>
       {/* Shop by Category */}
