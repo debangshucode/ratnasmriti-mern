@@ -17,9 +17,19 @@ export function useMainCategories() {
   return useFetch<MainCategory[]>("/admin/categories/main");
 }
 
+// Delete main category
+export function useDeleteMainCategory(id: string) {
+  return useFetch<{ message: string }>(`/admin/categories/main/${id}`);
+}
+
 // Fetch sub categories
 export function useSubCategories() {
   return useFetch<SubCategory[]>("/admin/categories/sub");
+}
+
+// Delete sub category
+export function useDeleteSubCategory(id: string) {
+  return useFetch<{ message: string }>(`/admin/categories/sub/${id}`);
 }
 
 // Fetch sub categories my main category
@@ -33,3 +43,4 @@ export function useSubCategoriesByMain(categoryId?: string) {
 export function useBlogs() {
   return useFetch<Blog[]>("/admin/blogs");
 }
+

@@ -96,7 +96,7 @@ export const Home: React.FC = () => {
           </div>
           <div className="">
             {/* {recentProducts.map((product) => ( */}
-            <ProductCard />
+            <ProductCard category="New_Arrival" />
             {/* ))} */}
           </div>
         </div>
@@ -233,7 +233,7 @@ export const Home: React.FC = () => {
           </div>
           <div className="">
             {/* {mostSoldProducts.map((product) => ( */}
-            <ProductCard />
+            <ProductCard category="Top_Seller"/>
             {/* ))} */}
           </div>
         </div>

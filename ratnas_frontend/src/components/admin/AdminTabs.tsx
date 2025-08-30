@@ -9,7 +9,7 @@ interface AdminTabsProps {
 
 export const AdminTabs: React.FC<AdminTabsProps> = ({ activeSection, setActiveSection }) => {
   const tabs = [
-    { id: 'products', label: 'Recent Products' },
+    { id: 'products', label: 'Products' },
     { id: 'categories', label: 'Categories' },
     { id: 'subcategories', label: 'Sub Categories' },
     { id: 'blogs', label: 'Blog Posts' },

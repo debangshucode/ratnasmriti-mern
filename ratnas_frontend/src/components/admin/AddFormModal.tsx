@@ -180,8 +180,8 @@ export const AddFormModal: React.FC<AddFormModalProps> = ({
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500"
                   required
                 >
-                  <option value="0">Publish</option>
-                  <option value="1">Draft</option>
+                  <option value="1">Publish</option>
+                  <option value="0">Draft</option>
                 </select>
               </div>
               <div>

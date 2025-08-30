@@ -1,19 +1,17 @@
 // controllers/postController.js
 import Post from "../models/Post.js";
 
-// Home data (Popular + Recommended)
-export const getHomeData = async (req, res) => {
+// Get products by section
+export const getProductsBySection = async (req, res) => {
   try {
-    const category = await (await import("../models/MainCategory.js")).default.find().sort({ _id: -1 });
-    const popular = await Post.find({ section: "Popular", status: "1" }).sort({ _id: -1 }).limit(4);
-    const recommended = await Post.find({ section: "Recommended", status: "1" }).sort({ _id: -1 }).limit(4);
-
-    res.json({ category, popular, recommended });
-  } catch (error) {
-    res.status(500).json({ message: error.message });
+    const { section } = req.params; // e.g. Popular, Recommended
+    const products = await Post.find({ section, status: "1" }); 
+    res.json(products);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Server error fetching products" });
   }
 };
-
 
 // CREATE Post
 export const createPost = async (req, res) => {

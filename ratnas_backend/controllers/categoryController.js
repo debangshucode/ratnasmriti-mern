@@ -60,6 +60,19 @@ export const getMainCategories = async (req, res) => {
   }
 };
 
+// Delete Main Category by ID
+export const deleteMainCategoryById = async (req, res) => {
+  try {
+    const deletedCategory = await MainCategory.findByIdAndDelete(req.params.id);
+    if (!deletedCategory) {
+      return res.status(404).json({ message: "Category not found" });
+    }
+    res.json({ message: "Category deleted successfully", category: deletedCategory });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 
 // ===== Sub Category CRUD =====
 export const createSubCategory = async (req, res) => {
@@ -91,6 +104,19 @@ export const getSubCategories = async (req, res) => {
   try {
     const subs = await SubCategory.find().populate("main_category").sort({ _id: -1 });
     res.json(subs);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+// Delete Sub Category by ID
+export const deleteSubCategoryById = async (req, res) => {
+  try {
+    const deletedSubCategory = await SubCategory.findByIdAndDelete(req.params.id);
+    if (!deletedSubCategory) {
+      return res.status(404).json({ message: "Sub-Category not found" });
+    }
+    res.json({ message: "Sub-Category deleted successfully", sub_category: deletedSubCategory });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

@@ -3,6 +3,8 @@ import authAdmin from "../middlewares/authAdmin.js";
 import {
   createMainCategory,
   createSubCategory,
+  deleteMainCategoryById,
+  deleteSubCategoryById,
   getCategoryProducts,
   getMainCategories,
   getSubCategories,
@@ -14,10 +16,12 @@ const router = express.Router();
 // Main Category
 router.post("/main", authAdmin, upload.single("Image"), createMainCategory);
 router.get("/main",  getMainCategories);
+router.delete("/main/:id",authAdmin,deleteMainCategoryById);
 
 // Sub Category
 router.post("/sub", authAdmin, upload.single("Image"), createSubCategory);
 router.get("/sub",  getSubCategories);
+router.delete("/sub/:id",authAdmin,deleteSubCategoryById);
 
 //public
 router.get("/pub-sub", getSubCategories);

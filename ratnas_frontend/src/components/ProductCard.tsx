@@ -1,28 +1,50 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-import { usePosts } from "../hook/apiHooks";
+
 import { Post } from "../types";
 import { WhatsAppModal } from "./WhatsAppModal";
+import axios from "axios";
 
-export const ProductCard: React.FC = () => {
-  const { data: posts, loading } = usePosts();
+interface ProductCardProps {
+  category: string;
+}
 
+
+
+export const ProductCard: React.FC<ProductCardProps> = ({ category }) => {
+  const [products, setProducts] = useState<Post[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchPopular = async () => {
+      try {
+        const baseUrl = import.meta.env.VITE_API_URL;
+        const res = await axios.get(`${baseUrl}/api/admin/posts/${category}`);
+        setProducts(res.data);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchPopular();
+  }, []);
   if (loading) return <p>Loading products...</p>;
 
   return (
     <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
-      {posts?.map((product) => (
+      {products?.map((product) => (
         <ProductCardItem key={product._id} product={product} />
       ))}
     </div>
   );
 };
 
-interface ProductCardProps {
+interface ProductCardItemProps {
   product: Post;
 }
 
-const ProductCardItem: React.FC<ProductCardProps> = ({ product }) => {
+const ProductCardItem: React.FC<ProductCardItemProps> = ({ product }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const discount = product.price && product.discounted_price !== undefined

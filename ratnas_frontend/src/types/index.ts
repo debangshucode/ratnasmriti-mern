@@ -38,3 +38,5 @@ content: string;
 author?: string;
 date?:string
 };
+
+export type AdminSection = 'products' | 'categories' | 'subcategories' | 'blogs' | 'orders';
