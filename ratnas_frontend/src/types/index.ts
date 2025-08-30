@@ -23,8 +23,8 @@ main_category: string; // id
 Name: string;
 Image?: string;
 product_name?: string;
-price?: number;
-discount_price?: number;
+price: number;
+discounted_price?: number;
 Description?: string;
 product_information?: string;
 };

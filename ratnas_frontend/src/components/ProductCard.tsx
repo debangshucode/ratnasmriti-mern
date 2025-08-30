@@ -53,6 +53,7 @@ const ProductCardItem: React.FC<ProductCardItemProps> = ({ product }) => {
 
   return (
     <>
+    
       <div className="bg-dark-orange-gradient-r rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group">
         {/* Image */}
         <div className="relative aspect-square overflow-hidden">

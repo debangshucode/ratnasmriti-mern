@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { Heart, Share2, ShoppingBag, MessageCircle, ZoomIn, Star } from 'lucide-react';
-import { mockProducts } from '../data/mockData';
-import { WhatsAppModal } from '../components/WhatsAppModal';
+import React, { useState } from "react";
+import { useParams } from "react-router-dom";
+import { Heart, Share2, ShoppingBag, MessageCircle, ZoomIn, Star } from "lucide-react";
+import { WhatsAppModal } from "../components/WhatsAppModal";
+import { useSubCategory } from "../hook/apiHooks";
 
 export const ProductDetail: React.FC = () => {
   const { productId } = useParams<{ productId: string }>();
@@ -11,27 +11,26 @@ export const ProductDetail: React.FC = () => {
   const [showWhatsAppModal, setShowWhatsAppModal] = useState(false);
   const [zoomPosition, setZoomPosition] = useState({ x: 0, y: 0 });
   const [isZooming, setIsZooming] = useState(false);
-  
-  const product = mockProducts.find(p => p.id === productId);
-  
+
+  const { data: product, loading, error } = useSubCategory(productId);
+
+  if (loading) return <p className="pt-24 text-center">Loading...</p>;
+  if (error) return <p className="pt-24 text-center">Error: {error}</p>;
   if (!product) {
     return (
-      <div className="pt-24 pb-20">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          <h1 className="text-4xl font-bold text-gray-900">Product Not Found</h1>
-        </div>
+      <div className="pt-24 pb-20 text-center">
+        <h1 className="text-4xl font-bold text-gray-900">Product Not Found</h1>
       </div>
     );
   }
 
-  const images = product.images || [product.image];
-  const discount = product.originalPrice 
-    ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)
+  const images = product.Image ? [product.Image] : [];
+  const discount = product?.discounted_price
+    ? Math.round(((product?.price - product?.discounted_price) / product?.price) * 100)
     : 0;
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!isZooming) return;
-    
     const rect = e.currentTarget.getBoundingClientRect();
     const x = ((e.clientX - rect.left) / rect.width) * 100;
     const y = ((e.clientY - rect.top) / rect.height) * 100;
@@ -44,52 +43,48 @@ export const ProductDetail: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Product Images */}
           <div className="space-y-4">
-            {/* Main Image */}
-            <div 
+            <div
               className="relative aspect-square bg-gray-100 rounded-2xl overflow-hidden group cursor-crosshair"
               onMouseMove={handleMouseMove}
               onMouseEnter={() => setIsZooming(true)}
               onMouseLeave={() => setIsZooming(false)}
             >
-              <img
-                src={images[selectedImage]}
-                alt={product.name}
-                className={`w-full h-full object-cover transition-transform duration-300 ${
-                  isZooming ? 'scale-150' : 'scale-100'
-                }`}
-                style={
-                  isZooming 
-                    ? { 
-                        transformOrigin: `${zoomPosition.x}% ${zoomPosition.y}%`,
-                      }
-                    : {}
-                }
-              />
-              {!isZooming && (
+              {images.length ? (
+                <img
+                  src={`http://localhost:5000/${images[selectedImage]}`}
+                  alt={product.Name}
+                  className={`w-full h-full object-cover transition-transform duration-300 ${
+                    isZooming ? "scale-150" : "scale-100"
+                  }`}
+                  style={isZooming ? { transformOrigin: `${zoomPosition.x}% ${zoomPosition.y}%` } : {}}
+                />
+              ) : (
+                <div className="flex items-center justify-center w-full h-full text-gray-400">
+                  No Image Available
+                </div>
+              )}
+
+              {!isZooming && images.length > 0 && (
                 <div className="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/20 transition-all">
                   <ZoomIn className="h-8 w-8 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
               )}
             </div>
-            
-            {/* Thumbnail Images */}
+
+            {/* Thumbnails */}
             {images.length > 1 && (
               <div className="flex space-x-4">
-                {images.map((image, index) => (
+                {images.map((img, index) => (
                   <button
                     key={index}
                     onClick={() => setSelectedImage(index)}
                     className={`flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition-all ${
-                      selectedImage === index 
-                        ? 'border-rose-600 ring-2 ring-rose-200' 
-                        : 'border-gray-200 hover:border-gray-300'
+                      selectedImage === index
+                        ? "border-rose-600 ring-2 ring-rose-200"
+                        : "border-gray-200 hover:border-gray-300"
                     }`}
                   >
-                    <img
-                      src={image}
-                      alt={`${product.name} ${index + 1}`}
-                      className="w-full h-full object-cover"
-                    />
+                    <img src={`http://localhost:5000/${img}`} alt={`${product.Name} ${index + 1}`} className="w-full h-full object-cover" />
                   </button>
                 ))}
               </div>
@@ -98,72 +93,37 @@ export const ProductDetail: React.FC = () => {
 
           {/* Product Info */}
           <div className="space-y-6">
-            <div>
-              <div className="flex items-center space-x-4 mb-2">
-                <span className="text-sm text-rose-600 font-medium">{product.category}</span>
-                {product.isNew && (
-                  <span className="px-2 py-1 bg-green-100 text-green-800 text-xs font-semibold rounded-full">
-                    NEW
-                  </span>
-                )}
-                {product.isSale && (
-                  <span className="px-2 py-1 bg-red-100 text-red-800 text-xs font-semibold rounded-full">
-                    SALE
-                  </span>
-                )}
-              </div>
-              <h1 className="text-4xl font-bold text-gray-900 mb-4">{product.name}</h1>
-              
-              {/* Rating */}
-              <div className="flex items-center space-x-2 mb-4">
-                <div className="flex items-center">
-                  {[1, 2, 3, 4, 5].map((star) => (
-                    <Star key={star} className="h-5 w-5 text-yellow-400 fill-current" />
-                  ))}
-                </div>
-                <span className="text-gray-600">(248 reviews)</span>
-              </div>
-              
-              {/* Price */}
-              <div className="flex items-center space-x-4 mb-6">
-                <span className="text-3xl font-bold text-gray-900">
-                  ${product.price.toFixed(2)}
-                </span>
-                {product.originalPrice && (
-                  <>
-                    <span className="text-xl text-gray-500 line-through">
-                      ${product.originalPrice.toFixed(2)}
-                    </span>
-                    <span className="px-2 py-1 bg-red-100 text-red-800 text-sm font-semibold rounded">
-                      Save {discount}%
-                    </span>
-                  </>
-                )}
-              </div>
+            {/* Section/Tag */}
+            <div className="flex items-center space-x-4 mb-2">
+              {product.main_category.Name && <span className="text-sm text-rose-600 font-medium">{product.main_category.Name}</span>}
             </div>
 
-            {/* Description */}
-            {product.description && (
+            {/* Name */}
+            <h1 className="text-4xl font-bold text-gray-900 mb-4">{product.Name}</h1>
+
+            {/* Price */}
+            <div className="flex items-center space-x-4 mb-6">
+              <span className="text-3xl font-bold text-gray-900">
+                ₹{product.discounted_price ?? product.price}
+              </span>
+              {product.discounted_price && (
+                <>
+                  <span className="text-xl text-gray-500 line-through">₹{product.price}</span>
+                  <span className="px-2 py-1 bg-red-100 text-red-800 text-sm font-semibold rounded">
+                    Save {discount}%
+                  </span>
+                </>
+              )}
+            </div>
+
+            {/* Short Content */}
+            
+
+            {/* Full Description */}
+            {product.Description && (
               <div>
                 <h3 className="font-semibold text-lg mb-2">Description</h3>
-                <p className="text-gray-600 leading-relaxed">{product.description}</p>
-              </div>
-            )}
-
-            {/* Specifications */}
-            {product.specifications && (
-              <div>
-                <h3 className="font-semibold text-lg mb-4">Specifications</h3>
-                <div className="bg-gray-50 rounded-lg p-4">
-                  <dl className="space-y-3">
-                    {Object.entries(product.specifications).map(([key, value]) => (
-                      <div key={key} className="flex justify-between">
-                        <dt className="font-medium text-gray-600">{key}:</dt>
-                        <dd className="text-gray-900">{value}</dd>
-                      </div>
-                    ))}
-                  </dl>
-                </div>
+                <p className="text-gray-600 leading-relaxed">{product.Description}</p>
               </div>
             )}
 
@@ -172,31 +132,31 @@ export const ProductDetail: React.FC = () => {
               <div className="flex space-x-4">
                 <button
                   onClick={() => setShowWhatsAppModal(true)}
-                  className="flex-1 bg-gradient-to-r from-green-600 to-green-700 text-white py-4 rounded-xl font-semibold hover:shadow-lg transition-all flex items-center justify-center space-x-2"
+                  className="flex-1 bg-green-600 text-white py-4 rounded-xl font-semibold hover:shadow-lg transition-all flex items-center justify-center space-x-2"
                 >
                   <MessageCircle className="h-5 w-5" />
                   <span>Order on WhatsApp</span>
                 </button>
-                
-                <button className="flex-1 bg-gradient-to-r from-rose-600 to-purple-600 text-white py-4 rounded-xl font-semibold hover:shadow-lg transition-all flex items-center justify-center space-x-2">
+
+                <button className="flex-1 bg-rose-600 text-white py-4 rounded-xl font-semibold hover:shadow-lg transition-all flex items-center justify-center space-x-2">
                   <ShoppingBag className="h-5 w-5" />
                   <span>Add to Cart</span>
                 </button>
               </div>
-              
+
               <div className="flex space-x-4">
                 <button
                   onClick={() => setIsLiked(!isLiked)}
                   className={`flex-1 py-3 rounded-xl font-medium transition-all flex items-center justify-center space-x-2 ${
-                    isLiked 
-                      ? 'bg-red-50 text-red-600 border border-red-200' 
-                      : 'bg-gray-50 text-gray-600 hover:bg-gray-100 border border-gray-200'
+                    isLiked
+                      ? "bg-red-50 text-red-600 border border-red-200"
+                      : "bg-gray-50 text-gray-600 hover:bg-gray-100 border border-gray-200"
                   }`}
                 >
-                  <Heart className={`h-5 w-5 ${isLiked ? 'fill-current' : ''}`} />
-                  <span>{isLiked ? 'Saved' : 'Save'}</span>
+                  <Heart className={`h-5 w-5 ${isLiked ? "fill-current" : ""}`} />
+                  <span>{isLiked ? "Saved" : "Save"}</span>
                 </button>
-                
+
                 <button className="flex-1 py-3 bg-gray-50 text-gray-600 rounded-xl font-medium hover:bg-gray-100 transition-all border border-gray-200 flex items-center justify-center space-x-2">
                   <Share2 className="h-5 w-5" />
                   <span>Share</span>
@@ -204,11 +164,11 @@ export const ProductDetail: React.FC = () => {
               </div>
 
               <div className="text-center py-4">
-                <a 
-                  href="tel:+1234567890"
+                <a
+                  href={`tel:${product.phone ?? "+1234567890"}`}
                   className="text-lg font-semibold text-rose-600 hover:text-purple-600 transition-colors"
                 >
-                  📞 Call Now: +1 (234) 567-890
+                  📞 Call Now: {product.phone ?? "+1 (234) 567-890"}
                 </a>
               </div>
             </div>
@@ -225,11 +185,7 @@ export const ProductDetail: React.FC = () => {
       </div>
 
       {/* WhatsApp Modal */}
-      <WhatsAppModal
-        isOpen={showWhatsAppModal}
-        onClose={() => setShowWhatsAppModal(false)}
-        product={product}
-      />
+      <WhatsAppModal isOpen={showWhatsAppModal} onClose={() => setShowWhatsAppModal(false)} product={product} />
     </div>
   );
 };

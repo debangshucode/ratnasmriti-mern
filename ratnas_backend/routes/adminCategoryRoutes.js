@@ -8,6 +8,7 @@ import {
   getCategoryProducts,
   getMainCategories,
   getSubCategories,
+  getSubCategoryById,
 } from "../controllers/categoryController.js";
 import upload from "../middlewares/uploadMiddleware.js";
 
@@ -21,7 +22,9 @@ router.delete("/main/:id",authAdmin,deleteMainCategoryById);
 // Sub Category
 router.post("/sub", authAdmin, upload.single("Image"), createSubCategory);
 router.get("/sub",  getSubCategories);
+router.get("/sub/:id",  getSubCategoryById);
 router.delete("/sub/:id",authAdmin,deleteSubCategoryById);
+
 
 //public
 router.get("/pub-sub", getSubCategories);

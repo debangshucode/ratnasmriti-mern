@@ -108,6 +108,17 @@ export const getSubCategories = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+// get post by id
+export const getSubCategoryById = async (req, res) => {
+  try {
+    const sub = await SubCategory.findById(req.params.id).populate("main_category");
+    if (!sub) return res.status(404).json({ message: "Sub-Category not found" });
+    res.json(sub);
+  }
+  catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
 
 // Delete Sub Category by ID
 export const deleteSubCategoryById = async (req, res) => {

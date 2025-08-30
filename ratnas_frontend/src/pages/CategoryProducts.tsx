@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { Filter} from "lucide-react";
 import { Helmet } from "react-helmet";
 import { useSubCategoriesByMain } from "../hook/apiHooks";
-import { ProductCard } from "../components/ProductCard";
+import ProductDisplay from "../components/ProductDisplay";
 
 export const CategoryProducts: React.FC = () => {
   const { categoryId } = useParams<{ categoryId: string }>();
@@ -11,6 +11,7 @@ export const CategoryProducts: React.FC = () => {
   const [priceRange] = useState<[number, number]>([0, 5000]);
 
   const { data, loading, error } = useSubCategoriesByMain(categoryId);
+  console.log(data);
 
   const category = data?.main_category;
   const products = data?.sub_categories ?? [];
@@ -96,15 +97,12 @@ export const CategoryProducts: React.FC = () => {
         </div>
 
         {/* Products */}
-        <div
-          className={"grid gap-5 grid-cols-1"} 
-        >
-          {filteredProducts.map((product) => (
-            <ProductCard
-              key={product._id}
-            />
-          ))}
-        </div>
+       <div className="grid gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        {filteredProducts.map((product) => (
+          <ProductDisplay key={product._id} product={product} />
+        ))}
+      </div>
+
 
         {filteredProducts.length === 0 && (
           <div className="text-center py-20">

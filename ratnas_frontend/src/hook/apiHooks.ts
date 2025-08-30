@@ -26,7 +26,10 @@ export function useDeleteMainCategory(id: string) {
 export function useSubCategories() {
   return useFetch<SubCategory[]>("/admin/categories/sub");
 }
-
+// fetch single sub category
+export function useSubCategory(id: any) {
+  return useFetch<SubCategory>(`/admin/categories/sub/${id}`);
+}
 // Delete sub category
 export function useDeleteSubCategory(id: string) {
   return useFetch<{ message: string }>(`/admin/categories/sub/${id}`);
