@@ -97,7 +97,7 @@ export const CategoryProducts: React.FC = () => {
 
         {/* Products */}
         <div
-          className={"grid gap-8 grid-cols-1"} 
+          className={"grid gap-5 grid-cols-1"} 
         >
           {filteredProducts.map((product) => (
             <ProductCard

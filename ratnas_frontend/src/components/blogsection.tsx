@@ -22,7 +22,7 @@ export const BlogSection: React.FC = () => {
   }
 
   return (
-    <section className="py-8 lg:py20 bg-gradient-to-b from-gray-50 to-white">
+    <section className="py-8 lg:py20 ">
       <div className="max-w-7xl mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-12 md:mb-16 animate-fade-in">

@@ -17,9 +17,9 @@ function HoroscopePage() {
   }, [selectedSign, fetchHoroscope]);
 
   return (
-    <div className="min-h-screen bg-bgLight">
+    <div className="min-h-screen bg-brand-gradient">
       {/* Header */}
-      <header className=" bg-dark-orange-gradient text-white py-8 pt-32 relative overflow-hidden">
+      <header className="  text-white py-8 pt-32 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-4 left-4 animate-pulse-soft">
             <Sparkles className="w-6 h-6" />

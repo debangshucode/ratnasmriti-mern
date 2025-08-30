@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Heart } from "lucide-react";
+
 import { usePosts } from "../hook/apiHooks";
 import { Post } from "../types";
 import { WhatsAppModal } from "./WhatsAppModal";
@@ -10,7 +10,7 @@ export const ProductCard: React.FC = () => {
   if (loading) return <p>Loading products...</p>;
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
       {posts?.map((product) => (
         <ProductCardItem key={product._id} product={product} />
       ))}
@@ -23,7 +23,6 @@ interface ProductCardProps {
 }
 
 const ProductCardItem: React.FC<ProductCardProps> = ({ product }) => {
-  const [isLiked, setIsLiked] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const discount = product.price && product.discounted_price !== undefined

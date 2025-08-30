@@ -102,13 +102,13 @@ export const TestimonialCarousel: React.FC = () => {
   };
 
   return (
-    <section className="py-8 lg:py20 bg-yellow-light-gradient-r overflow-hidden">
+    <section className="py-8 lg:py20  overflow-hidden">
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl lg:text-6xl font-bold text-darkBrown mb-4">
             What Our Customers Say
           </h2>
-          <p className="text-lg text-orangeAccent max-w-2xl mx-auto">
+          <p className="text-lg text-gray-900 max-w-2xl mx-auto">
             Don't just take our word for it. Here's what our valued customers
             have to say about their experience.
           </p>

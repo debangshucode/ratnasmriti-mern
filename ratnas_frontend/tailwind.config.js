@@ -30,6 +30,8 @@ export default {
           "linear-gradient(0deg, hsla(45, 3%, 47%, 1) 0%, hsla(37, 42%, 94%, 1) 100%)",
         "dark-orange-270-gradient":
           "linear-gradient(270deg, hsla(17, 72%, 18%, 1) 0%, hsla(36, 100%, 50%, 1) 100%)",
+        "brand-gradient":
+          "linear-gradient(180deg, hsla(17,72%,18%,1) 0%, hsla(36,100%,50%,1) 17%, hsla(48,100%,62%,1) 33%, hsla(37,42%,94%,1) 49%, hsla(48,100%,62%,1) 74%, hsla(36,100%,50%,1) 99%)",
       },
     },
   },

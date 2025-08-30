@@ -15,7 +15,7 @@ export const Home: React.FC = () => {
   if (catLoading) return <p>Loading...</p>;
 
   return (
-    <div className="w-full overflow-x-hidden">
+    <div className="w-full bg-brand-gradient overflow-x-hidden">
       <Helmet>
         <title>
           Best Jewellery & Gems Shop in Kolkata | Ratnasmriti Gems and Jewellers
@@ -80,11 +80,11 @@ export const Home: React.FC = () => {
         </script>
       </Helmet>
       {/* Hero Section */}
-      <div className="max-w-9xl mx-auto px-4 bg-dark-orange-gradient">
+      <div className="max-w-9xl mx-auto px-4 ">
         <HeroSection />
       </div>
       {/* Recent Products */}
-      <section className="py-8 lg:py20 bg-yellow-orange-gradient ">
+      <section className="py-8 lg:py20  ">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
             <h1 className="text-3xl lg:text-6xl font-bold text-bgLight mb-4">
@@ -102,9 +102,9 @@ export const Home: React.FC = () => {
         </div>
       </section>
       {/* horoscope */}
-      <section className="relative bg-dark-orange-gradient text-white overflow-hidden">
+      <section className="relative text-white overflow-hidden">
         {/* Animated background elements */}
-        <div className="absolute inset-0 opacity-20">
+        <div className="absolute inset-0 text-darkBrown opacity-20">
           <div className="absolute top-10 left-10 animate-float">
             <Stars className="w-8 h-8" />
           </div>
@@ -140,21 +140,20 @@ export const Home: React.FC = () => {
           </div>
         </div>
 
-        <div className="relative z-10 container mx-auto px-4 py-20 md:py-32 text-center">
+        <div className="relative z-10 container mx-auto px-4 py-8  text-center">
           <div className="inline-flex items-center justify-center w-24 h-24 bg-white/20 rounded-full mb-8 backdrop-blur-sm animate-pulse-soft">
             <Stars className="w-12 h-12" fill="currentColor" />
           </div>
 
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+          <h1 className="text-5xl md:text-7xl text-orangeAccent font-bold mb-6 leading-tight">
             Cosmic
-            <span className="block bg-gradient-to-r from-yellowAccent to-white bg-clip-text text-transparent">
+            <span className="block bg-darkBrown bg-clip-text text-transparent">
               Insights
             </span>
           </h1>
 
-          <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed">
-            Unlock the mysteries of the universe and discover what the stars
-            have aligned for your journey today
+          <p className="text-xl md:text-2xl text-orangeAccent mb-8  mx-auto leading-relaxed">
+           Unlock the mysteries of the universe and discover what the stars have aligned for your journey today. Let the cosmic energies guide you with wisdom, clarity, and insight as you step into opportunities, overcome challenges, and embrace the path destined for you.
           </p>
 
           <Link
@@ -172,17 +171,17 @@ export const Home: React.FC = () => {
         </div>
       </section>
       {/* Shop by Category */}
-      <section className="py-8 lg:py20 bg-yellow-light-gradient">
+      <section className="py-8 lg:py20 ">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
             <h1 className="text-3xl lg:text-6xl font-bold text-darkBrown mb-4">
               Shop by Category
             </h1>
-            <p className="text-lg text-darkBrown">
+            <p className="text-lg text-orangeAccent">
               Explore our diverse range of jewelry collections
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {categories?.slice(0, 4).map((category) => (
               <Link
                 key={category._id}
@@ -222,7 +221,7 @@ export const Home: React.FC = () => {
       </section>
 
       {/* Most Sold Products */}
-      <section className="py-8 lg:py20 bg-bgLight ">
+      <section className="py-8 lg:py20  ">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-6xl font-bold text-darkBrown mb-4">
@@ -246,7 +245,7 @@ export const Home: React.FC = () => {
       <TestimonialCarousel />
 
       {/* Contact & Location */}
-      <section className="py-8 lg:py20 bg-yellow-orange-gradient-r text-white">
+      <section className="py-8 lg:py20 text-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Map 1 */}
