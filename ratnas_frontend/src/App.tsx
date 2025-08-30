@@ -1,18 +1,21 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Navigation } from './components/Navigation';
-import { Footer } from './components/Footer';
-import { Home } from './pages/Home';
-import { Categories } from './pages/Categories';
-import { CategoryProducts } from './pages/CategoryProducts';
-import { ProductDetail } from './pages/ProductDetail';
-import { BlogPage } from './pages/BlogPage';
-import { AdminPage } from './pages/AdminPage';
-import About from './components/About';
-import HoroscopePage from './pages/horoscopePage';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Navigation } from "./components/Navigation";
+import { Footer } from "./components/Footer";
+import { Home } from "./pages/Home";
+import { Categories } from "./pages/Categories";
+import { CategoryProducts } from "./pages/CategoryProducts";
+import { ProductDetail } from "./pages/ProductDetail";
+import { BlogPage } from "./pages/BlogPage";
+import { AdminPage } from "./pages/AdminPage";
+import About from "./components/About";
+import HoroscopePage from "./pages/horoscopePage";
+import ScrollToTop from "./components/scrollToTop";
+
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div className="min-h-screen bg-gradient-to-br from-rose-50 to-purple-50">
         <Navigation />
         <main>
