@@ -1,6 +1,8 @@
 import React from 'react';
 import { Calendar, Star } from 'lucide-react';
 
+import { Helmet } from 'react-helmet';
+
 interface HoroscopeCardProps {
   sign: string;
   horoscope: string;
@@ -9,6 +11,17 @@ interface HoroscopeCardProps {
 
 const HoroscopeCard: React.FC<HoroscopeCardProps> = ({ sign, horoscope, date }) => {
   return (
+    <>
+       <Helmet>
+        <title>{`${sign} Horoscope - ${date}`}</title>
+        <meta name="description" content={horoscope.slice(0, 150) + "..."} />
+        <meta name="keywords" content={`${sign} horoscope, daily horoscope, ${sign} prediction`} />
+        <meta property="og:title" content={`${sign} Horoscope - ${date}`} />
+        <meta property="og:description" content={horoscope.slice(0, 150) + "..."} />
+        <meta property="og:type" content="article" />
+      </Helmet>
+
+    
     <div className="bg-white rounded-3xl shadow-2xl p-8 max-w-2xl mx-auto animate-float">
       <div className="text-center mb-8">
         <div className="inline-flex items-center justify-center w-20 h-20 bg-yellow-orange-gradient rounded-full mb-4 shadow-lg">
@@ -39,7 +52,8 @@ const HoroscopeCard: React.FC<HoroscopeCardProps> = ({ sign, horoscope, date }) 
           />
         ))}
       </div>
-    </div>
+      </div>
+      </>
   );
 };
 
