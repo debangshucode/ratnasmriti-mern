@@ -122,7 +122,7 @@ export const BlogPage: React.FC = () => {
                       </div>
                       <div className="flex items-center space-x-1">
                         <Clock className="h-4 w-4" />
-                        <span>{blog.readTime}</span>
+                        {/* <span>{blog.readTime}</span> */}
                       </div>
                     </div>
                   </div>

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { Heart, Share2, ShoppingBag, MessageCircle, ZoomIn, Star } from "lucide-react";
-import { WhatsAppModal } from "../components/WhatsAppModal";
 import { useSubCategory } from "../hook/apiHooks";
+import { WhatsAppModal } from "../components/WhatsAppModalP";
 
 export const ProductDetail: React.FC = () => {
   const { productId } = useParams<{ productId: string }>();

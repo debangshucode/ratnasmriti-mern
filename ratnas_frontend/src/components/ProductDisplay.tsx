@@ -1,8 +1,8 @@
 // components/ProductCard.tsx
 import React, { useState } from "react";
 import { Heart } from "lucide-react";
-import { WhatsAppModal } from "./WhatsAppModal";
 import { Link } from "react-router-dom";
+import { WhatsAppModal } from "./WhatsAppModalP";
 
 export interface Product {
   _id: string;
@@ -35,9 +35,9 @@ const ProductDisplay: React.FC<ProductCardProps> = ({ product }) => {
 
   return (
     <>
-    <Link to={`/product/${product._id}`}>
       <div className="bg-white shadow-md rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300 w-full max-w-sm mx-auto">
         {/* Product Image */}
+    <Link to={`/product/${product._id}`}>
         <div className="relative w-full h-48 sm:h-56 bg-gray-100 overflow-hidden">
           {Image ? (
             <img
@@ -67,6 +67,7 @@ const ProductDisplay: React.FC<ProductCardProps> = ({ product }) => {
           </button>
         </div>
 
+        </Link>
         {/* Product Info */}
         <div className="p-3 sm:p-4">
           <h3 className="text-base sm:text-lg font-semibold mb-1 line-clamp-1">{Name}</h3>
@@ -111,7 +112,6 @@ const ProductDisplay: React.FC<ProductCardProps> = ({ product }) => {
         onClose={() => setIsModalOpen(false)}
         product={product}
       />
-      </Link>
     </>
   );
 };
