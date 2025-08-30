@@ -65,12 +65,12 @@ const ProductCardItem: React.FC<ProductCardProps> = ({ product }) => {
           <div className="flex items-center gap-2">
             <span className="text-lg font-bold text-bgLight">
               {product.discounted_price !== undefined
-                ? `$${product.discounted_price.toFixed(2)}`
+                ? `₹${product.discounted_price.toFixed(2)}`
                 : "N/A"}
             </span>
             {product.price && (
               <span className="text-sm text-bgLight line-through">
-                ${product.price.toFixed(2)}
+                ₹{product.price.toFixed(2)}
               </span>
             )}
           </div>
@@ -78,7 +78,7 @@ const ProductCardItem: React.FC<ProductCardProps> = ({ product }) => {
           {/* Actions */}
           <div className="flex gap-2 pt-2">
             <a
-              href={`tel:`}
+              href={`tel:+919123375635`}
               className="flex-1 text-center py-2 text-sm font-medium text-bgLight  bg-orangeAccent  rounded-lg hover:bg-orangeAccent/50 hover:text-white transition-colors"
             >
               Call

@@ -54,7 +54,7 @@ ${customerInfo.message || 'No additional message'}
     `.trim();
 
     // WhatsApp business number (replace with actual number)
-    const whatsappNumber = '+916291176902';
+    const whatsappNumber = '+918820027279';
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
     
