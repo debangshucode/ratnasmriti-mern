@@ -103,7 +103,7 @@ ${customerInfo.message || 'No additional message'}
             <div>
               <h3 className="font-semibold text-gray-900">{product.Name}</h3>
               <p className="text-gray-600">{product.main_category.Name}</p>
-              <p className="text-lg font-bold text-rose-600">${product.price.toFixed(2)}</p>
+              <p className="text-lg font-bold text-rose-600">₹{product.price.toFixed(2)}</p>
             </div>
           </div>
         </div>

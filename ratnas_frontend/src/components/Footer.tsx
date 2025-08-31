@@ -42,7 +42,7 @@ export const Footer: React.FC = () => {
             <div className="space-y-2 text-gray-300 mb-4">
               <div className="flex items-center space-x-2">
                 <Phone className="h-6 w-6" />
-                <span>091233 75635</span>
+                <span>091233 75635 / 8820027279</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Mail className="h-6 w-6" />
@@ -50,9 +50,14 @@ export const Footer: React.FC = () => {
               </div>
               <div className="flex items-center space-x-2">
                 <MapPin className="h-8 w-8" />
-                <span>Bandel Sarat Sarani GT Road Near Canara Bank , Bandel, India</span>
+                <span>Hooghly Sarat Sarani Rd, near Canara Bank, Chinsurah, West Bengal 712103</span>
               </div>
             </div>
+             <div className="flex items-center space-x-2">
+                <MapPin className="h-8 w-8" />
+                <span>Manasibazar Building, 180, N.S.Avenue, Serampore, Shreerampore, West Bengal 712201</span>
+              </div>
+           
 
             {/* Social Buttons */}
             <div className="flex space-x-4 mt-4">

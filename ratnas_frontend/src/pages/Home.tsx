@@ -303,8 +303,7 @@ export const Home: React.FC = () => {
                 <div>
                   <h3 className="font-semibold text-lg mb-1">Address</h3>
                   <p className="text-bgLight">
-                    Sarat Sarani Rd, near Canara Bank, More, Chinsurah, West
-                    Bengal 712103
+                    Hooghly Sarat Sarani Rd, near Canara Bank, Chinsurah, West Bengal 712103
                   </p>
                 </div>
               </div>
