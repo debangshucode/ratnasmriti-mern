@@ -44,7 +44,7 @@ Address: ${customerInfo.address}
 💎 *Product Details:*
 Name: ${product.Name}
 Category: ${product.main_category.Name}
-Price: $${product.price.toFixed(2)}
+Price: ₹${product.price.toFixed(2)}
 Product ID: ${product._id}
 
 💬 *Additional Message:*
